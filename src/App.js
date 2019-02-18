@@ -5,14 +5,33 @@ import './App.css';
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      input: '',
+      route: 'signin'
+
+    }
+
+  }
+
+  onRouteChange = (route) =>{
+    this.setState({route: route});
+  }
+
+
   render() {
     return (
       <div className="App">
-        <Navigation />
-        <SignIn/>
-        {/*
-        <ImageLinkForm/>
-        <FaceRecognition /> */}
+
+        {this.state.route === 'home' ?
+            <SignIn onRouteChange={this.onRouteChange}/>
+
+            : <div>
+              <Navigation onRouteChange={this.onRouteChange}/></div>
+
+        }
+
       </div>
     );
   }

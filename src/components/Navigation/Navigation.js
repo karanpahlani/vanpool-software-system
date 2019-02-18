@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from '../Logo/Logo.js';
 
-const Navigation = () =>{
+const Navigation = ({onRouteChange}) =>{
     return(
       <nav style={{display: 'flex', justifyContent: 'space-between'}}>
           <Logo/>
 
-          <p className='f3 link dim dark-blue pa3 pointer'>Sign Out</p>
+          <p onClick ={() => onRouteChange('home')} className='f3 link dim dark-blue pa3 pointer'>Sign Out</p>
       </nav>
     );
 }
