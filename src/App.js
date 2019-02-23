@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import Register from './components/Register/Register'
+import Landing from './components/Landing/Landing';
+import Admin from './components/Dashboard/Admin/Dashboard_Admin';
+import Driver from './components/Dashboard/Driver/Dashboard_Driver';
+import Pssanger from './components/Dashboard/Passanger/Dashboard_Passanger';
 import './App.css';
 import Logo from "./components/Logo/Logo";
 
