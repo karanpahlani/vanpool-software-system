@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 import './App.css';
+import Logo from "./components/Logo/Logo";
 
 
 class App extends Component {
@@ -9,29 +11,62 @@ class App extends Component {
     super();
     this.state={
       input: '',
-      route: 'signin'
+      route: '',
+      isSignedIn: false
 
     }
 
   }
 
-  onRouteChange = (route) =>{
-    this.setState({route: route});
+  onRouteChange = (route) => {
+    if(route === 'signout') {
+      this.setState({isSignedIn: false})
+    } else if (route === 'home'){
+      this.setState({isSignedIn: true} )
+    }
+      this.setState({route: route})
+
   }
 
 
+
   render() {
-    return (
-      <div className="App">
 
-        {this.state.route === 'home' ?
-            <SignIn onRouteChange={this.onRouteChange}/>
+        let component = null;
+        switch(this.state.route) {
+          case 'signin':
+            component =
+                <div>
+                    <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                    <SignIn onRouteChange={this.onRouteChange}/>
+                </div>;
+            break;
+          case 'home':
+            component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
+            break;
 
-            : <div>
-              <Navigation onRouteChange={this.onRouteChange}/></div>
+          case 'signup':
+            component =
+              <div>
+              <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+              <Register onRouteChange={this.onRouteChange}/>
+              </div>
+            break;
 
+          default:
+            component =
+                <div>
+                  <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                  <SignIn onRouteChange={this.onRouteChange} />
+                </div>
+                  ;
         }
 
+
+
+    return (
+      <div className="App">
+        {component}
       </div>
     );
   }
