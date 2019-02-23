@@ -5,9 +5,9 @@ import Logo from '../Logo/Logo.js';
 const Landing = ({onRouteChange }) =>{
     return(
         <div>
-            <article className="br3 ba dark-gray  b--black-10 mv4 w-100 w-70-m w-70-l mw7 center">
+            <article className="br3 ba bg-black-10 dark-gray b--black-20 mv4 w-100 w-70-m w-50-l mw7 center">
                  <main className="pa4 black-80 mv3">
-                     <div className="f2 vh3 b--black-40">
+                     <div className="f2 vh3 b--black-30">
                          <Logo />
                          <p></p>
                      </div>
