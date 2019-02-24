@@ -3,14 +3,14 @@ import React from 'react';
 
 
 const DriverCard = (props) => {
-    const {name, username, id , email} = props;
+    const {username} = props;
     return(
-        <div className={" w-70 tc bg-light-gray dib br3 pa2 ma3 grow bw2 shadow-5"}>
+        <div className={" w-70 tc bg-light-gray dib br3 pa2 ma5 grow bw2 shadow-5"}>
             <div>
                 <p><h2>Rider Dashboard</h2></p>
                 <p className ="center"><h4>Logged in as userName</h4></p>
 
-                <article className="center mw3 mw5-ns br3 hidden ba b--black-10 mv4">
+                <article className="center mw3 mw5-ns br3 hidden ba b--black-10 mv">
                     <h1 className="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Actions</h1>
                     <div className="pa3 bt b--black-10">
                         <p className="f4 f5-ns lh-copy measure center">

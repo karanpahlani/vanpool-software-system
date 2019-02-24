@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register'
-import Landing from './components/Landing/Landing';
-import DriverCard from './components/Dashboard/Driver/DriverCard';
-import AdminCard from './components/Dashboard/Admin/AdminCard';
 import PassengerCard from './components/Dashboard/Passenger/PassengerCard';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import Logo from "./components/Logo/Logo";
 
 
 class App extends Component {
@@ -18,8 +15,8 @@ class App extends Component {
       route: '',
       isSignedIn: false
 
-    }
 
+    }
   }
 
   onRouteChange = (route) => {
@@ -29,7 +26,6 @@ class App extends Component {
       this.setState({isSignedIn: true} )
     }
       this.setState({route: route})
-
   };
 
 
@@ -44,24 +40,27 @@ class App extends Component {
                     <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                     <SignIn onRouteChange={this.onRouteChange}/>
                 </div>;
-            break;
-          case 'home':
-            component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
+                    break;
+
+            case 'home':
+                component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
             break;
 
-          case 'signup':
-            component =
-              <div>
-              <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-              <Register onRouteChange={this.onRouteChange}/>
-              </div>
-            break;
+            case 'signup':
+                component =
+                  <div>
+                      <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                      <Register onRouteChange={this.onRouteChange} />
+                  </div>;
+              break;
 
             default:
                 component =
                     <div>
                         <div>
+                            <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                             <PassengerCard onRouteChange={this.onRouteChange} />
+
                         </div>
                     </div>
 
@@ -69,7 +68,8 @@ class App extends Component {
             //     component =
             //         <div>
             //             <div>
-            //                 <AdminCard onRouteChange={this.onRouteChange} />
+            //                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+            //                  <AdminCard onRouteChange={this.onRouteChange} />
             //             </div>
             //         </div>
 
@@ -77,7 +77,8 @@ class App extends Component {
             //     component =
             //         <div>
             //             <div>
-            //                 <DriverCard onRouteChange={this.onRouteChange} />
+            //                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+            //                  <DriverCard onRouteChange={this.onRouteChange} />
             //             </div>
             //         </div>
 
