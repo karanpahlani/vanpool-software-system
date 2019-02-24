@@ -23,17 +23,8 @@ const DriverCard = (props) => {
                         </p>
                     </div>
                 </article>
-
-
             </div>
-
-            <div>
-                <p><h4>{username}</h4></p>
-            </div>
-
         </div>
-
-
     );
 }
 
