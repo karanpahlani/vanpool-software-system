@@ -5,7 +5,7 @@ import React from 'react';
 const DriverCard = (props) => {
     const {name, username, id , email} = props;
     return(
-        <div className={" w-70 tc bg-light-gray dib br3 pa2 ma3 grow bw2 shadow-5"}>
+        <div className={"  w-50 mw7 tc bg-light-gray dib br3 pa2 ma5 grow bw2 shadow-5"}>
             <div>
                 <p><h2>Admin Dashboard</h2></p>
                 <p className ="center"><h4>Logged in as userName</h4></p>
