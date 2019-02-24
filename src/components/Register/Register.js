@@ -54,6 +54,6 @@ const Register = ({onRouteChange }) =>{
     </div>
 
     );
-}
+};
 
 export default Register;

@@ -14,8 +14,6 @@ class App extends Component {
       input: '',
       route: '',
       isSignedIn: false
-
-
     }
   }
 
@@ -38,21 +36,21 @@ class App extends Component {
             component =
                 <div>
                     <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                    <SignIn onRouteChange={this.onRouteChange}/>
+                    <SignIn onRouteChange={this.onRouteChange} />
                 </div>;
-                    break;
+          break;
 
-            case 'home':
-                component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
-            break;
+          case 'home':
+                component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+          break;
 
-            case 'signup':
+          case 'signup':
                 component =
                   <div>
                       <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                       <Register onRouteChange={this.onRouteChange} />
                   </div>;
-              break;
+          break;
 
             default:
                 component =
@@ -60,7 +58,6 @@ class App extends Component {
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                             <PassengerCard onRouteChange={this.onRouteChange} />
-
                         </div>
                     </div>
 
