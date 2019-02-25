@@ -3,7 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
-import Logo from "./components/Logo/Logo";
+
 
 
 class App extends Component {
@@ -18,7 +18,9 @@ class App extends Component {
 
   }
 
-  onRouteChange = (route) => {
+
+
+    onRouteChange = (route) => {
     if(route === 'signout') {
       this.setState({isSignedIn: false})
     } else if (route === 'home'){
@@ -50,7 +52,7 @@ class App extends Component {
               <div>
               <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
               <Register onRouteChange={this.onRouteChange}/>
-              </div>
+              </div>;
             break;
 
           default:
