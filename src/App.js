@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register'
-import PassengerCard from './components/Dashboard/Passenger/PassengerCard';
+import PassengerDashboard from './components/Dashboard/Passenger/PassengerDashboard';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
+import AdminCard from "./components/Dashboard/Admin/AdminCard";
+import DriverCard from "./components/Dashboard/Driver/DriverCard";
+import Landing from "./components/Landing/Landing";
 
 
 class App extends Component {
@@ -57,7 +60,7 @@ class App extends Component {
                     <div>
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                            <PassengerCard onRouteChange={this.onRouteChange} />
+                            <PassengerDashboard onRouteChange={this.onRouteChange} />
                         </div>
                     </div>
 
