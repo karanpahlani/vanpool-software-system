@@ -9,13 +9,34 @@ import './App.css';
 class App extends Component {
   constructor(){
     super();
-    this.state={
+    this.state = {
       input: '',
       route: 'signin',
       isSignedIn: false,
+        user:{
+            id:'',
+            name: '',
+            email: '',
+
+            entries: 0,
+            joined: ''
+        }
 
     }
   }
+
+    loadUser = (data) => {
+        this.setState({user:  {
+                id: data.id,
+                name: data.name,
+                email: data.email,
+
+                entries: data.entries,
+                joined: data.joined
+            }})
+
+    }
+
 
     onRouteChange = (route) => {
     if(route === 'signout') {
@@ -28,16 +49,6 @@ class App extends Component {
     this.setState({route: route})
 
   }
-
-  /*loadUser = (data) => {
-      this.setState({user:  {
-          email: data.email,
-          id: data.id,
-          name: data.name
-      }})
-
-  }
-*/
 
   render() {
 
@@ -70,7 +81,7 @@ class App extends Component {
             component =
               <div>
               <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-              <Register onRouteChange={this.onRouteChange} />
+              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}  />
               </div>;
             break;
 

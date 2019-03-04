@@ -25,15 +25,35 @@ class Register extends React.Component{
         this.setState({password: event.target.value})
     }
 
+    onSubmitSignIn = () => {
+        fetch('http://localhost:3000/register', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password,
+                name: this.state.name
+            })
+        })
+            .then(response => response.json())
+            .then(user => {
+                if (user) {
+                    this.props.loadUser(user);
+                    this.props.onRouteChange('home');
+                }
+            })
+    }
+
 
 
     render() {
         const {onRouteChange} = this.props;
+
         return (
             <div>
                 <article className="br3 ba dark-gray  b--black-10 mv4 w-100 w-70-m w-25-l mw7 center">
                     <main className="pa4 black-80">
-                        <form className="measure center">
+                        <div className="measure center">
 
                             <fieldset id="sign_up" className="ba b--transparent  ph0 mh0">
                                 <legend className="f2 fw6 ph0 mh0">Sign Up</legend>
@@ -56,7 +76,7 @@ class Register extends React.Component{
                                         type="email"
                                         name="email-address"
                                         id="email-address"
-                                        onChange={this.on}
+                                        onChange={this.onEmailChange}
                                     />
                                 </div>
 
@@ -67,6 +87,7 @@ class Register extends React.Component{
                                         type="password"
                                         name="password"
                                         id="password"
+                                        onChange={this.onPasswordChange}
 
                                     />
                                 </div>
@@ -75,13 +96,14 @@ class Register extends React.Component{
 
                             <div className="">
                                 <input
-                                    onClick={() => onRouteChange('home')}
+                                    onClick={this.onSubmitSignIn}
                                     className="b ph3 pv2 input-reset ba b--black bg-gray grow pointer f6 dib"
                                     type="submit"
                                     value="Sign Up"
+
                                 />
                             </div>
-                        </form>
+                        </div>
 
                     </main>
                 </article>
