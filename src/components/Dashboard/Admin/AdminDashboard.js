@@ -8,7 +8,6 @@ const DriverDashboard = (props) => {
         <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 ma5 grow bw2 shadow-5"}>
             <div>
 
-
                 <article className="cf">
                     <div className="fl pa2 w-33 tc">
 
