@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
+import UserCard from "./components/UserCard/UserCard";
 
 
 
@@ -17,7 +18,6 @@ class App extends Component {
             id:'',
             name: '',
             email: '',
-
             entries: 0,
             joined: ''
         }
@@ -30,7 +30,6 @@ class App extends Component {
                 id: data.id,
                 name: data.name,
                 email: data.email,
-
                 entries: data.entries,
                 joined: data.joined
             }})
@@ -58,7 +57,7 @@ class App extends Component {
             component =
                 <div>
                     <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                    <SignIn onRouteChange={this.onRouteChange}/>
+                    <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </div>
             break;
 
@@ -74,6 +73,7 @@ class App extends Component {
             component =
                 <div>
                 <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                <UserCard name ={this.state.user.name} id={this.state.user.id} email={this.state.user.email}/>
                 </div>
               break;
 
