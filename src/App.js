@@ -5,9 +5,9 @@ import Register from './components/Register/Register'
 import PassengerDashboard from './components/Dashboard/Passenger/PassengerDashboard';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import AdminCard from "./components/Dashboard/Admin/AdminCard";
-import DriverCard from "./components/Dashboard/Driver/DriverCard";
+import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
 import Landing from "./components/Landing/Landing";
+import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 
 
 class App extends Component {
@@ -55,12 +55,21 @@ class App extends Component {
                   </div>;
           break;
 
+            // default:
+            //     component =
+            //         <div>
+            //             <div>
+            //                 <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+            //                 <PassengerDashboard onRouteChange={this.onRouteChange} />
+            //             </div>
+            //         </div>
+
             default:
                 component =
                     <div>
                         <div>
-                            <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                            <PassengerDashboard onRouteChange={this.onRouteChange} />
+                             <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                             <AdminDashboard onRouteChange={this.onRouteChange} />
                         </div>
                     </div>
 
@@ -69,16 +78,7 @@ class App extends Component {
             //         <div>
             //             <div>
             //                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-            //                  <AdminCard onRouteChange={this.onRouteChange} />
-            //             </div>
-            //         </div>
-
-            // default:
-            //     component =
-            //         <div>
-            //             <div>
-            //                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-            //                  <DriverCard onRouteChange={this.onRouteChange} />
+            //                  <DriverDashboard onRouteChange={this.onRouteChange} />
             //             </div>
             //         </div>
 
