@@ -11,57 +11,71 @@ class App extends Component {
     super();
     this.state={
       input: '',
-      route: '',
-      isSignedIn: false
+      route: 'signin',
+      isSignedIn: false,
 
     }
-
   }
-
-
 
     onRouteChange = (route) => {
     if(route === 'signout') {
       this.setState({isSignedIn: false})
+
     } else if (route === 'home'){
       this.setState({isSignedIn: true} )
     }
-      this.setState({route: route})
+
+    this.setState({route: route})
 
   }
 
+  /*loadUser = (data) => {
+      this.setState({user:  {
+          email: data.email,
+          id: data.id,
+          name: data.name
+      }})
 
+  }
+*/
 
   render() {
 
-        let component = null;
+        let component = null
         switch(this.state.route) {
-          case 'signin':
+          case 'signin'  :
             component =
                 <div>
                     <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                     <SignIn onRouteChange={this.onRouteChange}/>
                 </div>;
             break;
+
+          case 'signout'  :
+                component =
+                    <div>
+                        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        <SignIn onRouteChange={this.onRouteChange}/>
+                    </div>;
+                break;
+
           case 'home':
-            component = <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
-            break;
+            component =
+                <div>
+                <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />;
+                </div>
+              break;
 
           case 'signup':
             component =
               <div>
               <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-              <Register onRouteChange={this.onRouteChange}/>
+              <Register onRouteChange={this.onRouteChange} />
               </div>;
             break;
 
           default:
-            component =
-                <div>
-                  <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                  <SignIn onRouteChange={this.onRouteChange} />
-                </div>
-                  ;
+
         }
 
 

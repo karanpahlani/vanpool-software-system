@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
 class SignIn extends React.Component{
 
     constructor(props){
@@ -14,7 +11,7 @@ class SignIn extends React.Component{
         }
     }
 
-   onEmailChange = (event) => {
+    onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value})
     }
 
@@ -22,33 +19,27 @@ class SignIn extends React.Component{
         this.setState({signInPassword: event.target.value})
     }
 
-    onSubmitSignIn=()=>{
-        fetch('http://localhost:3000/signin',{
-            method:'post',
-            headers:{'Content-Type' : 'application/json'},
+    onSubmitSignIn = () => {
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email: this.state.signInEmail,
                 password: this.state.signInPassword
             })
         })
-             .then(response=> response.json())
-             .then(data => {
-                  if(data === 'success'){
-                      this.props.onRouteChange('home');
-                 }
-
+                 .then(response => response.json())
+                 .then(data => {
+                     if (data ==='success') {
+                         this.props.onRouteChange('home');
+                     }
                  })
-
-
-
     }
 
     render() {
         const {onRouteChange} = this.props;
-
         return (
             <div>
-
                 <article className="br3 ba dark-gray  b--black-10 mv4 w-100 w-70-m w-25-l mw7 center">
                     <main className="pa4 black-80">
                         <form className="measure center">
