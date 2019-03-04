@@ -45,7 +45,7 @@ const DriverDashboard = (props) => {
                             <div className="pa1 bt b--black-10">
                                 <p className="f4 lh-copy measure center">
 
-                                    <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Create Route</a>
+                                    <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Select Route</a>
                                     <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Payment Info</a>
                                     <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Driving Data</a>
                                     <a className="f4 w-90 link dim br3 ph3 pv1  dib white bg-gray" href="#0">Edit Account</a>

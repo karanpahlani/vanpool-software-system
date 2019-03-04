@@ -65,16 +65,10 @@ const DriverDashboard = (props) => {
 
 
                                 <div className="b--black-10 pa2">Active Routes Here From DB</div>
-
-
                             </div>
                         </article>
                     </div>
-
                 </article>
-
-
-
             </div>
         </div>
     );

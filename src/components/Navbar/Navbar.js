@@ -14,10 +14,18 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
         } else{
            return(
                <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-                   <nav className="f6 fw6 ttu tracked">
-                       <a onClick ={() => onRouteChange('signout')}  className="link dim white dib mr3" href="#" title="Sign In">Sign In</a>
-                       <a onClick ={() => onRouteChange('signout')}  className="link dim white dib mr3" href="#" title="Sign Up">Sign Up</a>
-                   </nav>
+                   <nav className="f6 fw6  tracked">
+
+                       <article className="cf">
+                           <div className="fl w-60 tc">
+                               <span className="link white dib "> Logged in as username</span>
+                           </div>
+                           <div className="fl w-40 tc">
+                               <a onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" href="#" title="Sign Up">Sign Out</a>
+                           </div>
+                       </article>
+
+                      </nav>
                </header>
            );
         }
