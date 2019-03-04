@@ -17,11 +17,17 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
                    <nav className="f6 fw6  tracked">
 
                        <article className="cf">
-                           <div className="fl w-60 tc">
+                           <div className="fl  w-20 tc">
+                                <p></p>
+                           </div>
+                           <div className="fl  w-30 tc">
                                <span className="link white dib "> Logged in as username</span>
                            </div>
-                           <div className="fl w-40 tc">
+                           <div className="fl  w-30 tc">
                                <a onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" href="#" title="Sign Up">Sign Out</a>
+                           </div>
+                           <div className="fl  w-20 tc">
+                               <p></p>
                            </div>
                        </article>
 

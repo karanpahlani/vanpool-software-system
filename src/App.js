@@ -8,6 +8,8 @@ import './App.css';
 import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
 import Landing from "./components/Landing/Landing";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
+import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount";
+
 
 
 class App extends Component {
@@ -64,14 +66,27 @@ class App extends Component {
             //             </div>
             //         </div>
 
+            // default:
+            //     component =
+            //         <div>
+            //             <div>
+            //                  <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+            //                  <AdminDashboard onRouteChange={this.onRouteChange} />
+            //             </div>
+            //         </div>
+
             default:
                 component =
                     <div>
                         <div>
-                             <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                             <AdminDashboard onRouteChange={this.onRouteChange} />
+                            <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <EditRiderAccount onRouteChange={this.onRouteChange} />
+
+
                         </div>
                     </div>
+
+
 
             // default:
             //     component =
