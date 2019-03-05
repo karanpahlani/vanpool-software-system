@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import Register from './components/Register/Register'
+import PassengerDashboard from './components/Dashboard/Passenger/PassengerDashboard';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import UserCard from "./components/UserCard/UserCard";
+import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
+import Landing from "./components/Landing/Landing";
+import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
+import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount";
+
 
 
 
@@ -12,6 +18,7 @@ class App extends Component {
     super();
     this.state = {
       input: '',
+
       route: 'signin',
       isSignedIn: false,
         user:{
@@ -21,7 +28,6 @@ class App extends Component {
             entries: 0,
             joined: ''
         }
-
     }
   }
 
@@ -44,6 +50,8 @@ class App extends Component {
     } else if (route === 'home'){
       this.setState({isSignedIn: true} )
     }
+      this.setState({route: route})
+  };
 
     this.setState({route: route})
 
@@ -57,6 +65,7 @@ class App extends Component {
             component =
                 <div>
                     <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+
                     <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </div>
             break;
