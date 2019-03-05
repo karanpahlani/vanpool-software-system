@@ -8,7 +8,7 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
                 <Logo/>
                 <p onClick ={() => onRouteChange('signout')} className='f3 link dim dark-blue pa3 pointer'>Sign Out</p>
                 </nav>
-            );
+            )
 
         } else{
            return(
@@ -19,7 +19,7 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
 
 
             </nav>
-    );
+    )
    }
 }
 

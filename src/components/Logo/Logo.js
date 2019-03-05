@@ -7,7 +7,7 @@ const Logo = () =>{
     return(
         <div>
             <Tilt className="Tilt shadow-2" options={{ max : 60 }} style={{ height: 150, width: 250 }} >
-                <div className="Tilt-inner"> <img alt="img" src={ require('./logo.png') } /> </div>
+                <div className="Tilt-inner"> <img src={ require('./logo.png') }  alt="our vss logo" /> </div>
             </Tilt>
         </div>
     );
