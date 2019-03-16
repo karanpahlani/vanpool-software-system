@@ -12,15 +12,19 @@ class SignIn extends React.Component{
     }
 
     onEmailChange = (event) => {
+        //alert("onEmailChange Called = " + event.target.value);
         this.setState({signInEmail: event.target.value})
     }
 
     onPasswordChange = (event) => {
+        //alert("onPasswordChange Called = " + event.target.value);
         this.setState({signInPassword: event.target.value})
     }
 
     onSubmitSignIn = () => {
+        //alert("attempting to log in");
         fetch('http://localhost:3000/signin', {
+
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -28,11 +32,17 @@ class SignIn extends React.Component{
                 password: this.state.signInPassword
             })
         })
+
                  .then(response => response.json())
                  .then(user => {
+
                      if (user.id) {
-                         this.props.loadUser(user);
-                         this.props.onRouteChange('home');
+                         alert("line 39: user.id = true");
+                         this.state.loadUser(user);
+                         this.state.onRouteChange('home');
+
+                     } else {
+                         alert("line 39: user.id = false");
                      }
                  })
     }
