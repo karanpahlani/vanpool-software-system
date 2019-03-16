@@ -47,7 +47,7 @@ class Register extends React.Component{
 
 
     render() {
-        const {onRouteChange} = this.props;
+
 
         return (
             <div>

@@ -34,6 +34,7 @@ class App extends Component {
                 joined: data.joined
             }})
 
+        console.log(data)
     }
 
 
@@ -50,13 +51,13 @@ class App extends Component {
   }
 
   render() {
-
+        const {isSignedIn, route} = this.state;
         let component = null
-        switch(this.state.route) {
+        switch(route) {
           case 'signin'  :
             component =
                 <div>
-                    <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                    <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                     <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </div>
             break;
@@ -65,15 +66,15 @@ class App extends Component {
                 component =
                     <div>
                         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                        <SignIn onRouteChange={this.onRouteChange}/>
+                        <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
 
           case 'home':
             component =
                 <div>
-                <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                <UserCard name ={this.state.user.name} id={this.state.user.id} email={this.state.user.email}/>
+                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                <UserCard name ={this.state.user.name} id={this.state.user.id} />
                 </div>
               break;
 
