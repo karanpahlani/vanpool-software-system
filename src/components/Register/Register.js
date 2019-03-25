@@ -9,7 +9,9 @@ class Register extends React.Component{
         this.state = {
             email:'',
             password: '',
-            name: ''
+            name: '',
+            question1: '',
+            question2: ''
         }
     }
 
@@ -25,6 +27,14 @@ class Register extends React.Component{
         this.setState({password: event.target.value})
     }
 
+    onQuestion1Change = (event) => {
+        this.setState({question1: event.target.value})
+    }
+
+    onQuestion2Change = (event) => {
+        this.setState({question2: event.target.value})
+    }
+
     onSubmitSignIn = () => {
         fetch('http://localhost:3000/register', {
             method: 'post',
@@ -32,7 +42,9 @@ class Register extends React.Component{
             body: JSON.stringify({
                 email: this.state.email,
                 password: this.state.password,
-                name: this.state.name
+                name: this.state.name,
+                question1: this.question1,
+                question2: this.question2
             })
         })
             .then(response => response.json())
@@ -89,6 +101,28 @@ class Register extends React.Component{
                                         id="password"
                                         onChange={this.onPasswordChange}
 
+                                    />
+                                </div>
+
+                                <div className="mt3">
+                                    <label className="db fw6 lh-copy f6" htmlFor="question1-response">What's your moms maiden name?</label>
+                                    <input
+                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                        type="question1"
+                                        name="question1-response"
+                                        id="question1-response"
+                                        onChange={this.onQuestion1Change}
+                                    />
+                                </div>
+
+                                <div className="mt3">
+                                    <label className="db fw6 lh-copy f6" htmlFor="question2-response">Where were you born?</label>
+                                    <input
+                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                        type="question2"
+                                        name="question2-response"
+                                        id="question2-response"
+                                        onChange={this.onQuestion2Change}
                                     />
                                 </div>
 
