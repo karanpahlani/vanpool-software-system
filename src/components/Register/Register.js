@@ -105,7 +105,7 @@ class Register extends React.Component{
                                 </div>
 
                                 <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                                    <label className="db fw6 lh-copy f6" htmlFor="question1-response">What's your moms maiden name?</label>
                                     <input
                                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                         type="question1"
@@ -116,7 +116,7 @@ class Register extends React.Component{
                                 </div>
 
                                 <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                                    <label className="db fw6 lh-copy f6" htmlFor="question2-response">Where were you born?</label>
                                     <input
                                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                         type="question2"
