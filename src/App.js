@@ -19,15 +19,17 @@ class App extends Component {
     this.state = {
       input: '',
 
-      route: 'signout',
-      isSignedIn: false,
+      route: 'home',
+      isSignedIn: true,
         user:{
             id:'',
-            name: '',
+            name: 'Marcus',
             email: '',
             entries: 0,
             joined: '',
-            type: ''
+            type: 'passenger',
+            accountBalance: '$10.31',
+            profilePictureURL: '',
         }
     }
   }
@@ -39,7 +41,9 @@ class App extends Component {
                 email: data.email,
                 entries: data.entries,
                 joined: data.joined,
-                userType: data.type
+                type: data.type,
+                accountBalance: data.accountBalance,
+                profilePictureURL: data.profilePictureURL,
             }})
         alert("home");
         this.state.onRouteChange('home');
@@ -82,22 +86,25 @@ class App extends Component {
           case 'home':
 
               if(this.state.user.type === 'passenger'){
+                  //alert("passanger landing");
                   component =
                       <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <PassengerDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <Navbar userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <PassengerDashboard userAccountBalance={this.state.user.accountBalance} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                       </div>
               } else if(this.state.user.type === 'driver') {
+                  //alert("driver landing");
                   component =
                       <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <DriverDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <Navbar userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <DriverDashboard userAccountBalance={this.state.user.accountBalance} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                       </div>
               } else if(this.state.user.type === 'admin') {
+                  //alert("admin landing");
                   component =
                       <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <AdminDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <Navbar userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                          <AdminDashboard userName={this.state.user.name}isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                       </div>
               }
 

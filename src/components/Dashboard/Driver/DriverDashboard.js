@@ -3,7 +3,6 @@ import React from 'react';
 
 
 const DriverDashboard = (props) => {
-    const {username} = props;
     return(
         <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 ma5 grow bw2 shadow-5"}>
             <div>
@@ -15,7 +14,7 @@ const DriverDashboard = (props) => {
                         <article className="mw5 m3 center bg-white br3 pa2 ba b--black-20">
                             <div className="tc">
                                 <img src="http://tachyons.io/img/avatar_1.jpg" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
-                                <h1 className="f3 mb2">username</h1>
+                                <h1 className="f3 mb2">{props.name}</h1>
                                 <h2 className="f5 fw4 gray mt0">Driver</h2>
                             </div>
                         </article>
@@ -27,7 +26,7 @@ const DriverDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Balance</h1>
                             <div className=" bt b--black-10">
 
-                                <h1 className="f3 mb3">$10.45</h1>
+                                <h1 className="f3 mb3">{props.userAccountBalance}</h1>
 
                                 <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
                                     <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Withdraw Funds</a>

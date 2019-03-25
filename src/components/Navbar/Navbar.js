@@ -2,7 +2,7 @@ import React from 'react';
 //import Logo from '../Logo/Logo.js';
 
 
-const Navigation = ({onRouteChange, isSignedIn}) =>{
+const Navigation = ({userName, onRouteChange, isSignedIn}) =>{
         if(isSignedIn){
             return(
                 <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
@@ -21,7 +21,7 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
                                 <p></p>
                            </div>
                            <div className="fl  w-30 tc">
-                               <span className="link white dib "> Logged in as username</span>
+                               <span className="link white dib "> Logged in as {userName}</span>
                            </div>
                            <div className="fl  w-30 tc">
                                <a onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" href="#" title="Sign Up">Sign Out</a>
