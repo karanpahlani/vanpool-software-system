@@ -41,6 +41,7 @@ class App extends Component {
                 joined: data.joined,
                 userType: data.type
             }})
+
         alert("home");
         this.state.onRouteChange('home');
     }
@@ -59,13 +60,13 @@ class App extends Component {
 
 
   render() {
-
+        const {isSignedIn, route} = this.state;
         let component = null
-        switch(this.state.route) {
+        switch(route) {
           case 'signin'  :
             component =
                 <div>
-                    <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                    <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                     <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </div>
             break;
@@ -75,31 +76,17 @@ class App extends Component {
                 component =
                     <div>
                         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                        <SignIn onRouteChange={this.onRouteChange}/>
+                        <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
 
           case 'home':
 
-              if(this.state.user.type === 'passenger'){
-                  component =
-                      <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <PassengerDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                      </div>
-              } else if(this.state.user.type === 'driver') {
-                  component =
-                      <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <DriverDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                      </div>
-              } else if(this.state.user.type === 'admin') {
-                  component =
-                      <div>
-                          <Navbar isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                          <AdminDashboard isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-                      </div>
-              }
+            component =
+                <div>
+                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                <UserCard name ={this.state.user.name} id={this.state.user.id} />
+                </div>
 
               break;
 

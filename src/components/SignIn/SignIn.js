@@ -36,13 +36,11 @@ class SignIn extends React.Component{
                  .then(response => response.json())
                  .then(user => {
 
-                     if (user.id) {
-                         alert("line 39: user.id = true");
-                         this.state.loadUser(user);
-                         this.state.onRouteChange('home');
+                      if (user.id){
+                         console.log("signIn button", user);
+                         this.props.loadUser(user);
+                         this.props.onRouteChange('home');
 
-                     } else {
-                         alert("line 39: user.id = false");
                      }
                  })
     }
@@ -59,8 +57,7 @@ class SignIn extends React.Component{
                                 <div className="mt3">
                                     <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                                     <input
-                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                                        type="email"
+                                        className="pa2 ba bg-transparent hover-bg-black hover-white w-100"
                                         name="email-address"
                                         id="email-address"
                                         onChange={this.onEmailChange}
