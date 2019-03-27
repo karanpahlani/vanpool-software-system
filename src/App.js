@@ -1,36 +1,29 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register'
-import PassengerDashboard from './components/Dashboard/Passenger/PassengerDashboard';
-import Navbar from './components/Navbar/Navbar';
+import Register from './components/Register/Register';
 import './App.css';
-import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
-import Landing from "./components/Landing/Landing";
-import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
-import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount";
-
+import UserCard from "./components/UserCard/UserCard";
 
 
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      input: '',
+    constructor(){
+        super();
+        this.state = {
+            input: '',
+            route: 'signin',
+            isSignedIn: false,
+            user:{
+                id:'',
+                name: '',
+                email: '',
+                entries: 0,
+                joined: ''
+            }
 
-      route: 'signout',
-      isSignedIn: false,
-        user:{
-            id:'',
-            name: '',
-            email: '',
-            entries: 0,
-            joined: '',
-            type: ''
         }
     }
-  }
 
     loadUser = (data) => {
         this.setState({user:  {
@@ -38,41 +31,38 @@ class App extends Component {
                 name: data.name,
                 email: data.email,
                 entries: data.entries,
-                joined: data.joined,
-                userType: data.type
+                joined: data.joined
             }})
 
-        alert("home");
-        this.state.onRouteChange('home');
+        console.log(data)
     }
 
 
     onRouteChange = (route) => {
-    if(route === 'signout') {
-      this.setState({isSignedIn: false})
+        if(route === 'signout') {
+            this.setState({isSignedIn: false})
 
-    } else if (route === 'home'){
-      this.setState({isSignedIn: true} )
+        } else if (route === 'home'){
+            this.setState({isSignedIn: true} )
+        }
+
+        this.setState({route: route})
+
     }
-      this.setState({route: route})
-  };
 
-
-
-  render() {
+    render() {
         const {isSignedIn, route} = this.state;
         let component = null
         switch(route) {
-          case 'signin'  :
-            component =
-                <div>
-                    <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-                    <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-                </div>
-            break;
+            case 'signin'  :
+                component =
+                    <div>
+                        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
 
-          case 'signout'  :
-              //alert("case: signout");
+            case 'signout'  :
                 component =
                     <div>
                         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
@@ -80,36 +70,34 @@ class App extends Component {
                     </div>
                 break;
 
-          case 'home':
+            case 'home':
+                component =
+                    <div>
+                        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <UserCard name ={this.state.user.name} id={this.state.user.id} />
+                    </div>
+                break;
 
-            component =
-                <div>
-                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-                <UserCard name ={this.state.user.name} id={this.state.user.id} />
-                </div>
+            case 'signup':
+                component =
+                    <div>
+                        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}  />
+                    </div>
+                break;
 
-              break;
-
-          case 'signup':
-            component =
-              <div>
-              <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
-              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}  />
-              </div>
-            break;
-
-          default:
+            default:
 
         }
 
 
 
-    return (
-      <div className="App">
-        {component}
-      </div>
-    );
-  }
+        return (
+            <div className="App">
+                {component}
+            </div>
+        );
+    }
 }
 
 export default App;
