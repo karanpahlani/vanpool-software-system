@@ -15,7 +15,7 @@ const EditDriverAccount = (props) => {
                         <article className="mw5 m3 center bg-white br3 pa2 ba b--black-20">
                             <div className="tc">
                                 <img src="http://tachyons.io/img/avatar_1.jpg" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
-                                <h1 className="f3 mb2">username</h1>
+                                <h1 className="f3 mb2">{props.userName}</h1>
                                 <h2 className="f5 fw4 gray mt0">Driver</h2>
                             </div>
                         </article>
