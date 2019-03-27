@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import Register from './components/Register/Register'
+import PassengerDashboard from './components/Dashboard/Passenger/PassengerDashboard';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import UserCard from "./components/UserCard/UserCard";
+import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
+import Landing from "./components/Landing/Landing";
+import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
+import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount";
+
 
 
 
@@ -12,16 +18,17 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      route: 'signin',
+
+      route: 'signout',
       isSignedIn: false,
         user:{
             id:'',
             name: '',
             email: '',
             entries: 0,
-            joined: ''
+            joined: '',
+            type: ''
         }
-
     }
   }
 
@@ -31,10 +38,12 @@ class App extends Component {
                 name: data.name,
                 email: data.email,
                 entries: data.entries,
-                joined: data.joined
+                joined: data.joined,
+                userType: data.type
             }})
 
-        console.log(data)
+        alert("home");
+        this.state.onRouteChange('home');
     }
 
 
@@ -45,10 +54,10 @@ class App extends Component {
     } else if (route === 'home'){
       this.setState({isSignedIn: true} )
     }
+      this.setState({route: route})
+  };
 
-    this.setState({route: route})
 
-  }
 
   render() {
         const {isSignedIn, route} = this.state;
@@ -63,6 +72,7 @@ class App extends Component {
             break;
 
           case 'signout'  :
+              //alert("case: signout");
                 component =
                     <div>
                         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
@@ -71,11 +81,13 @@ class App extends Component {
                 break;
 
           case 'home':
+
             component =
                 <div>
                 <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                 <UserCard name ={this.state.user.name} id={this.state.user.id} />
                 </div>
+
               break;
 
           case 'signup':
