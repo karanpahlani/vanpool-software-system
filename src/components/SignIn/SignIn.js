@@ -35,7 +35,7 @@ class SignIn extends React.Component{
                 console.log(responseJson);
                 console.log("USER LOGGED IN ", responseJson.loggedIn);
                 if (responseJson.loggedIn) {
-                    this.props.loadUser(responseJson);
+                    this.props.loadUser(responseJson.userData);
                     this.props.onRouteChange('home');
                 }
             })
@@ -92,7 +92,9 @@ class SignIn extends React.Component{
                     </main>
                 </article>
             </div>
+
         );
+
      }
 }
 
