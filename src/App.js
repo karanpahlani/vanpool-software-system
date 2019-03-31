@@ -27,7 +27,8 @@ class App extends Component {
                 name: '',
                 email: '',
                 entries: 0,
-                joined: ''
+                joined: '',
+                type: ''
             }
 
         }
@@ -35,25 +36,15 @@ class App extends Component {
 
     loadUser = (data) => {
         this.setState({user:  {
-                id: data.id,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                entries: data.entries,
-
-                joined: data.joined
+                id: data.userData.id,
+                name: data.userData.name,
+                email: data.userData.email,
+                entries: data.userData.entries,
+                joined: data.userData.joined,
+                type: data.type
             }})
 
-        console.log(data)
-
-              //  joined: data.joined,
-                //type: data.type,
-                //accountBalance: data.accountBalance,
-                //profilePictureURL: data.profilePictureURL,
-            //}})
-        //alert("loadUser called");
-        //this.state.onRouteChange('home');
-
+        console.log('current user type of the state is: ', this.state.user.type)
     }
 
 
