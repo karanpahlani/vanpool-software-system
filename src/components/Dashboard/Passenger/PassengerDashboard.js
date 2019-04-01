@@ -15,7 +15,7 @@ const PassengerDashboard = (props) => {
                             <div className="tc">
                                 <img src={props.profilePic} className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2"  />
                                 <h1 className="f3 mb2">{props.userName}</h1>
-                                <h2 className="f5 fw4 gray mt0">Rider</h2>
+                                <h2 className="f5 fw4 gray mt0">{props.userType}</h2>
                             </div>
                         </article>
 
@@ -26,7 +26,8 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Balance</h1>
                             <div className=" bt b--black-10">
 
-                                <h1 className="f3 mb3">{props.userAccountBalance}</h1>
+
+                                <h1 className="f3 mb3">"0.0"</h1>
 
                                 <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
                                     <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Add Funds</a>
