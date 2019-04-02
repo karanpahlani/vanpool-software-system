@@ -13,7 +13,7 @@ const DriverDashboard = (props) => {
 
                         <article className="mw5 m3 center bg-white br3 pa2 ba b--black-20">
                             <div className="tc">
-                                <img src="http://tachyons.io/img/avatar_1.jpg" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2"  />
+                                <img src="https://robohash.org/7g7" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2"  />
                                 <h1 className="f3 mb2">{props.userName}</h1>
                                 <h2 className="f5 fw4 gray mt0">{props.userType}</h2>
                             </div>
