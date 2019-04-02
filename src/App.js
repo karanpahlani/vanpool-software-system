@@ -4,6 +4,9 @@ import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
 import UserCard from "./components/UserCard/UserCard";
+import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
+import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
+import Navbar from "./components/Navbar/Navbar"
 
 
 
@@ -20,7 +23,8 @@ class App extends Component {
                 email: '',
                 entries: 0,
                 joined: '',
-                type: ''
+                type: '',
+                balance: '$0.00'
             }
 
         }
@@ -73,12 +77,26 @@ class App extends Component {
                 break;
 
             case 'home':
-                component =
-                    <div>
-                        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-                        <UserCard name ={this.state.user.name} id={this.state.user.id} />
-                    </div>
+
+
+                if(this.state.user.type === 'passenger'){
+                    //alert("passanger landing");
+                    component =
+                        <div>
+                            <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                            <PassengerDashboard userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        </div>
+                } else if(this.state.user.type === 'driver') {
+                    //alert("driver landing");
+                    component =
+                        <div>
+                            <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                            <DriverDashboard  userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        </div>
+                }
+
                 break;
+
 
             case 'signup':
                 component =
