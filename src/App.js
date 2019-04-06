@@ -3,10 +3,10 @@ import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
-import UserCard from "./components/UserCard/UserCard";
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 import Navbar from "./components/Navbar/Navbar"
+import CreateRoute from "./components/CreateRoute/CreateRoute"
 
 
 
@@ -23,8 +23,9 @@ class App extends Component {
                 email: '',
                 entries: 0,
                 joined: '',
+                balance: '',
                 type: '',
-                balance: '$0.00'
+
             }
 
         }
@@ -37,10 +38,12 @@ class App extends Component {
                 email: data.userData.email,
                 entries: data.userData.entries,
                 joined: data.userData.joined,
-                type: data.type
+                balance: data.userData.balance,
+                type: data.type,
+
             }})
 
-        console.log('current user type of the state is: ', this.state.user.type)
+        console.log(this.state.user);
     }
 
 
@@ -84,14 +87,14 @@ class App extends Component {
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <PassengerDashboard userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <PassengerDashboard userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                         </div>
                 } else if(this.state.user.type === 'driver') {
                     //alert("driver landing");
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <DriverDashboard  userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <DriverDashboard  userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                         </div>
                 }
 
@@ -106,7 +109,16 @@ class App extends Component {
                     </div>
                 break;
 
+            case 'createRoute':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <CreateRoute onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
             default:
+
 
         }
 
