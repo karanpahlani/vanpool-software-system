@@ -3,7 +3,6 @@ import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
-import UserCard from "./components/UserCard/UserCard";
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 import Navbar from "./components/Navbar/Navbar"
@@ -11,6 +10,8 @@ import Navbar from "./components/Navbar/Navbar"
 
 
 class App extends Component {
+
+
     constructor(){
         super();
         this.state = {
@@ -24,7 +25,8 @@ class App extends Component {
                 entries: 0,
                 joined: '',
                 type: '',
-                balance: '$0.00'
+                balance: '$0.00',
+                routename: ''
             }
 
         }
@@ -37,10 +39,13 @@ class App extends Component {
                 email: data.userData.email,
                 entries: data.userData.entries,
                 joined: data.userData.joined,
-                type: data.type
-            }})
+                type: data.type,
+                routename: data.routename,
+            }}
+            )
 
         console.log('current user type of the state is: ', this.state.user.type)
+        console.log('Active Rides  ', this.state.user.routename)
     }
 
 
@@ -84,7 +89,7 @@ class App extends Component {
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <PassengerDashboard userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <PassengerDashboard activeRide = {this.state.user.routename} userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                         </div>
                 } else if(this.state.user.type === 'driver') {
                     //alert("driver landing");
