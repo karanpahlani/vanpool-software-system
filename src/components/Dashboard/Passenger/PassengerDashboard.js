@@ -27,7 +27,7 @@ const PassengerDashboard = (props) => {
                             <div className=" bt b--black-10">
 
 
-                                <h1 className="f3 mb3">"0.0"</h1>
+                                <h1 className="f3 mb3">${props.userBalance}</h1>
 
                                 <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
                                     <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Add Funds</a>
