@@ -27,7 +27,7 @@ class App extends Component {
                 joined: '',
                 balance: '',
                 type: '',
-                balance: '$0.00',
+                balance: '',
                 routename: ''
 
             }
@@ -50,8 +50,8 @@ class App extends Component {
             
 
         console.log('current user type of the state is: ', this.state.user.type)
-        console.log('Active Rides  ', this.state.user.routename)
-        console.log(this.state.user);
+        console.log('Active Rides: ', this.state.user.routename)
+        //console.log(this.state.user);
 
     }
 
