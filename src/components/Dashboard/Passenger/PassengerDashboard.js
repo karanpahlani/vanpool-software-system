@@ -66,7 +66,7 @@ const PassengerDashboard = (props) => {
                             <div className=" bt b--black-10">
 
 
-                                <div className="b--black-10 pa2">Active Ride Here From DB</div>
+                                <div className="b--black-10 pa2"> {props.activeRide}</div>
 
 
                             </div>

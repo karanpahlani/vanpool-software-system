@@ -11,6 +11,8 @@ import CreateRoute from "./components/CreateRoute/CreateRoute"
 
 
 class App extends Component {
+
+
     constructor(){
         super();
         this.state = {
@@ -25,6 +27,8 @@ class App extends Component {
                 joined: '',
                 balance: '',
                 type: '',
+                balance: '',
+                routename: ''
 
             }
 
@@ -38,12 +42,17 @@ class App extends Component {
                 email: data.userData.email,
                 entries: data.userData.entries,
                 joined: data.userData.joined,
-                balance: data.userData.balance,
                 type: data.type,
+                routename: data.routename,
+                balance: data.userData.balance
 
             }})
+            
 
-        console.log(this.state.user);
+        console.log('current user type of the state is: ', this.state.user.type)
+        console.log('Active Rides: ', this.state.user.routename)
+        //console.log(this.state.user);
+
     }
 
 
@@ -87,7 +96,8 @@ class App extends Component {
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <PassengerDashboard userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <PassengerDashboard activeRide = {this.state.user.routename} userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+
                         </div>
                 } else if(this.state.user.type === 'driver') {
                     //alert("driver landing");
