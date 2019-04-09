@@ -1,13 +1,13 @@
 import React from 'react';
-//import Logo from '../Logo/Logo.js';
 
 
-const Navigation = ({userName, onRouteChange, isSignedIn}) =>{
+
+const Navbar = ({userName, onRouteChange, isSignedIn}) =>{
         if(!isSignedIn){
             return(
                 <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
                     <nav className="f6 fw6 ttu tracked">
-                        <a onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3" href="#" title="Sign In">Sign In</a>
+                        <a onClick ={() => onRouteChange('signup')}  className="link dim white dib mr3" href="#" title="Sign Un">Create account</a>
                     </nav>
                 </header>
             );
@@ -37,4 +37,4 @@ const Navigation = ({userName, onRouteChange, isSignedIn}) =>{
         }
 };
 
-export default Navigation;
+export default Navbar;
