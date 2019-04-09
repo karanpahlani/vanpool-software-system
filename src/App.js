@@ -66,7 +66,7 @@ class App extends Component {
             case 'signin'  :
                 component =
                     <div>
-                        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
@@ -74,7 +74,7 @@ class App extends Component {
             case 'signout'  :
                 component =
                     <div>
-                        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;

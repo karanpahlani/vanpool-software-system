@@ -24,7 +24,7 @@ const Navigation = ({userName, onRouteChange, isSignedIn}) =>{
                                <a onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" href="#" title="Home">Home</a>
                            </div>
                            <div className="fl  w-30 tc">
-                               <a onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3" href="#" title="Sign In">Sign Out</a>
+                               <a onClick ={() => onRouteChange('signout')} className="link dim white dib mr3" href="#" title="Sign In">Sign Out</a>
                            </div>
                            <div className="fl  w-20 tc">
                                <p></p>
