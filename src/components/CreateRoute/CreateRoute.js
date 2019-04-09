@@ -8,12 +8,22 @@ class CreateRoute extends React.Component {
         super(props);
 
         this.state = {
-            route: ''
+            route: '',
+            start: '',
+            stop: '',
         }
     }
 
     onCreateRouteChange = (event) => {
         this.setState({route: event.target.value})
+    };
+
+    onCreateRouteStartChange = (event) => {
+        this.setState({start: event.target.value})
+    };
+
+    onCreateRouteStopChange = (event) => {
+        this.setState({stop: event.target.value})
     };
 
     onSubmitCreateRoute = () => {
@@ -22,6 +32,8 @@ class CreateRoute extends React.Component {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 route: this.state.route,
+                start: this.state.start,
+                stop: this.state.stop
             })
         })
     }
@@ -53,7 +65,7 @@ class CreateRoute extends React.Component {
                                             <label htmlFor="route" className="tc tl f7 db mb2">Route Name</label>
                                             <input
                                                 id="route"
-                                                className="center input-reset f3 pa2 db w-40"
+                                                className="center input-reset f3 pa2 db w-60"
                                                 type="route"
                                                 name="route"
                                                 aria-describedby="name-desc"
@@ -61,6 +73,40 @@ class CreateRoute extends React.Component {
                                                 onChange={this.onCreateRouteChange}
                                             />
                                         </div>
+
+                                        <div className="pa2 w-100">
+                                            <label htmlFor="start" className="tc tl f7 db mb2">From:</label>
+                                            <input
+                                                id="start"
+                                                className="center input-reset f3 pa2 db w-60"
+                                                type="start"
+                                                name="start"
+                                                aria-describedby="name-desc"
+                                                placeholder="Starting address"
+                                                onChange={this.onCreateRouteStartChange}
+                                            />
+                                        </div>
+
+                                        <div className="pa2 w-100">
+                                            <label htmlFor="stop" className="tc tl f7 db mb2">To:</label>
+                                            <input
+                                                id="stop"
+                                                className="center input-reset f3 pa2 db w-60"
+                                                type="stop"
+                                                name="stop"
+                                                aria-describedby="name-desc"
+                                                placeholder="Destination address"
+                                                onChange={this.onCreateRouteStopChange}
+                                            />
+                                        </div>
+
+                                        <label htmlFor="stop" className="tc tl f7 db mt3 mb2">Select Vehicle:</label>
+                                        <select className="gray h2 fw5 b--black-30 w-40 f4" name="cars">
+                                            <option className="gray fw5 b--black-30 w-40 f4" value="volvo">Volvo</option>
+                                            <option className="gray fw5 b--black-30 w-40 f4" value="saab">Saab</option>
+                                            <option className="gray fw5 b--black-30 w-40 f4" value="fiat">Fiat</option>
+                                            <option className="gray fw5 b--black-30 w-40 f4" value="audi">Audi</option>
+                                        </select>
 
                                     </fieldset>
 
