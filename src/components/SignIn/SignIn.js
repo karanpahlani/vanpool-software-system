@@ -92,7 +92,7 @@ class SignIn extends React.Component{
                                         />
                                     </div>
                                     <div className="lh-copy mt3">
-                                        <a onClick={() => onRouteChange('signup')} className="f6 link dim black db">Sign up</a>
+                                        <a onClick={() => onRouteChange('signup')} className="pointer f6 link dim black db">Sign up</a>
                                         <a href="#0" className="f6 link dim black db">Forgot your password?</a>
                                     </div>
                                 </form>
