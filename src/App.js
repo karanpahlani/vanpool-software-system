@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import Register from './components/Register/Register'
+import RoutesDropDown from './components/RoutesDropDown/RoutesDropDown';
 import './App.css';
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
@@ -65,6 +66,12 @@ class App extends Component {
         const {isSignedIn, route} = this.state;
         let component = null
         switch(route) {
+            case 'routesDropDown' :
+                component =
+                    <div>
+                        <RoutesDropDown/>
+                    </div>
+                break;
             case 'signin'  :
                 component =
                     <div>
