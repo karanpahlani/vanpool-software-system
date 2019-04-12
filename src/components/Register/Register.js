@@ -10,7 +10,7 @@ class Register extends React.Component{
             email:'',
             password: '',
             name: '',
-            type: ''
+            type: 'passenger'
         }
     }
 
