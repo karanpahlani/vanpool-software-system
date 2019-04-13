@@ -1,15 +1,14 @@
 import React from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import SearchBox from'../SearchBox/SearchBox'
 
 
 
-class RoutesDropDown extends React.Component {
+class RoutesDropDown extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             selectedOption: '',
-            value: 0,
             allRoutes: []
         }
     }
@@ -34,8 +33,13 @@ class RoutesDropDown extends React.Component {
     handleChange = (event) => {
         this.setState({
             selectedOption: event.target.value,
-            value: event.target.value
+
         });
+    }
+
+    onSubmit = () => {
+        console.log(this.state.selectedOption);
+
     }
 
 
@@ -46,12 +50,13 @@ class RoutesDropDown extends React.Component {
         return( <div>
 
             <div>
+                <SearchBox/>
                 List of Current Routes:
 
             </div>
                         <div>
                         {this.state.allRoutes.map(function (route) {
-                            console.log("tf:", this.state.selectedOption === (route.routeid).toString());
+
                             return<div onChange={this.handleChange.bind(this)}>
                                 <input type="radio" name={route.routename}  checked = {this.state.selectedOption === (route.routeid).toString()}
                                 value={route.routeid}/>
@@ -60,8 +65,14 @@ class RoutesDropDown extends React.Component {
                         }, this)}
                         </div>
             <div>
-
-
+                <div className="">
+                    <input
+                        onClick={this.onSubmit}
+                        className="b ph3 pv2 input-reset ba b--black bg-gray grow pointer f6 dib"
+                        type="submit"
+                        value="submit"
+                    />
+                </div>
             </div>
 
             </div>
