@@ -17,7 +17,7 @@ class App extends Component {
         super();
         this.state = {
             input: '',
-            route: 'routesDropDown',
+            route: 'signin',
             isSignedIn: false,
             user:{
                 id:'',
@@ -35,15 +35,14 @@ class App extends Component {
 
     loadUser = (data) => {
         this.setState({user:  {
-                id: data.userData.id,
+                id: data.userData.userid,
                 name: data.userData.name,
                 email: data.userData.email,
                 entries: data.userData.entries,
                 joined: data.userData.joined,
                 type: data.type,
                 routename: data.routename,
-            }}
-            )
+            }})
 
         console.log('current user type of the state is: ', this.state.user.type)
         console.log('Active Rides  ', this.state.user.routename)
@@ -69,7 +68,7 @@ class App extends Component {
             case 'routesDropDown' :
                 component =
                     <div>
-                        <RoutesDropDown/>
+                        <RoutesDropDown  loadUser={this.loadUser} onRouteChange={this.onRouteChange} personid={this.state.user.id}/>
                     </div>
                 break;
             case 'signin'  :
@@ -87,10 +86,7 @@ class App extends Component {
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
-
             case 'home':
-
-
                 if(this.state.user.type === 'passenger'){
                     //alert("passanger landing");
                     component =
@@ -108,8 +104,6 @@ class App extends Component {
                 }
 
                 break;
-
-
             case 'signup':
                 component =
                     <div>

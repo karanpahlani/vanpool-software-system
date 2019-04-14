@@ -9,8 +9,10 @@ class RoutesDropDown extends React.Component{
         super(props);
         this.state = {
             selectedOption: '',
-            allRoutes: []
-        }
+            allRoutes: [],
+            id: props.personid
+        };
+        console.log("these are the props", props.personid)
     }
 
     componentDidMount(){
@@ -39,6 +41,22 @@ class RoutesDropDown extends React.Component{
 
     onSubmit = () => {
         console.log(this.state.selectedOption);
+        console.log(this.state.id);
+        fetch('http://localhost:3000/addride', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                route: this.state.selectedOption,
+                passid: this.state.id
+
+            })
+
+        })
+            .then(response => response.json())
+            .then(user=> {
+                    this.props.onRouteChange('home');
+                    this.props.loadUser(user)
+            })
 
     }
 
