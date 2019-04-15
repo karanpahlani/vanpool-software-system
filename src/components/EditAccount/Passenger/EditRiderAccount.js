@@ -13,7 +13,7 @@ const EditRiderAccount = (props) => {
 
                         <article className="w-auto center bg-white pa2 br3 ba b--black-20">
                             <div className="tc">
-                                <img src="http://tachyons.io/img/avatar_1.jpg" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
+                                <img src="https://robohash.org/gk09" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
                                 <h1 className="f3 mb2">{props.userName}</h1>
                                 <h2 className="f5 fw4 gray mt0">{props.userType}</h2>
                             </div>
@@ -55,9 +55,9 @@ const EditRiderAccount = (props) => {
                                             <label htmlFor="password2" className="tl f7 db mb2">Confirm Password</label>
                                             <input id="password2"
                                                    className="input-reset ba b--black-20 pa2 f3 mb2 db w-100"
-                                                   type="password2"
+                                                   type="password"
                                                    aria-describedby="password2-desc"
-                                                   placeholder="Enter new password" />
+                                                   placeholder="Confirm new password" />
                                         </div>
 
                                         <br />

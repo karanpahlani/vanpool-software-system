@@ -7,7 +7,6 @@ const PassengerDashboard = (props) => {
         <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 mv6 bw2 shadow-5"}>
             <div>
 
-
                 <article className="cf">
                     <div className="fl pa2 w-33 tc">
 
@@ -82,17 +81,14 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Ride History</h1>
                             <div className=" bt b--black-10">
 
-
                                 <div className="b--black-10 pa2">Ride History Listing From DB</div>
                                 <div className="b--black-10 pa2 bt">Ride History Listing From DB</div>
-
 
                             </div>
                         </article>
                     </div>
 
                 </article>
-
 
             </div>
         </div>

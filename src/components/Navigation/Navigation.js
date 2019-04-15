@@ -16,11 +16,9 @@ const Navigation = ({onRouteChange, isSignedIn}) =>{
                 <Logo/>
                 <p onClick ={() => onRouteChange('signin')} className='f3 link dim dark-blue pa3 pointer'>Sign In</p>
                 <p onClick ={() => onRouteChange('signup')} className='f3 link dim dark-blue pa3 pointer'>Sign Up</p>
-
-
             </nav>
-    )
-   }
+           )
+        }
 }
 
 export default Navigation;
