@@ -7,7 +7,6 @@ const PassengerDashboard = (props) => {
         <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 mv6 bw2 shadow-5"}>
             <div>
 
-
                 <article className="cf">
                     <div className="fl pa2 w-33 tc">
 
@@ -48,7 +47,7 @@ const PassengerDashboard = (props) => {
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Search for Ride</a>
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Payment Info</a>
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Driving Data</a>
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</a>
+                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editRiderAccount')}>Edit Account</a>
 
                                 </p>
                             </div>
@@ -82,17 +81,14 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Ride History</h1>
                             <div className=" bt b--black-10">
 
-
                                 <div className="b--black-10 pa2">Ride History Listing From DB</div>
                                 <div className="b--black-10 pa2 bt">Ride History Listing From DB</div>
-
 
                             </div>
                         </article>
                     </div>
 
                 </article>
-
 
             </div>
         </div>

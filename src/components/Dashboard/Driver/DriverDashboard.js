@@ -47,7 +47,7 @@ const DriverDashboard = (props) => {
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" onClick ={() => props.onRouteChange('createRoute')}>Create Route</a>
                                     <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Payment Info</a>
                                     <a className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Driving Data</a>
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</a>
+                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editDriverAccount')}>Edit Account</a>
 
                                 </p>
                             </div>

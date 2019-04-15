@@ -96,7 +96,7 @@ class CreateRoute extends React.Component {
                                                 name="stop"
                                                 aria-describedby="name-desc"
                                                 placeholder="Destination address"
-                                                onChange={this.onCreateRouteStopChange}
+                                                n
                                             />
                                         </div>
 

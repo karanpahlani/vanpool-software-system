@@ -7,6 +7,9 @@ import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashbo
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 import Navbar from "./components/Navbar/Navbar"
 import CreateRoute from "./components/CreateRoute/CreateRoute"
+import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount"
+import EditDriverAccount from "./components/EditAccount/Driver/EditDriverAccount";
+
 
 
 
@@ -125,6 +128,24 @@ class App extends Component {
                         <CreateRoute onRouteChange={this.onRouteChange} />
                     </div>
                 break;
+
+            case 'editRiderAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <EditRiderAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+            case 'editDriverAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <EditDriverAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+
 
             default:
 
