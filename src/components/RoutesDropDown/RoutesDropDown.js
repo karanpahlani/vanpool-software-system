@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBox from'../SearchBox/SearchBox';
-import Scroll from '../Scroll/Scroll';
+//import Scroll from '../Scroll/Scroll';
 
 
 
@@ -65,6 +65,7 @@ class RoutesDropDown extends React.Component{
                     this.props.loadUser(user)
             })
 
+        alert("Active Ride updated, 5$ will be added to your balance")
     }
 
 
@@ -83,16 +84,20 @@ class RoutesDropDown extends React.Component{
                 List of Current Routes:
 
             </div>
+
                         <div>
                         {filroute.map(function (route) {
-
                             return <div className="pa2 flex items-center mb2 mw5  center fn bg-light-red .shadow-3" onChange={this.handleChange.bind(this)}>
+
                                 <input    type="radio" name={route.routename}  checked = {this.state.selectedOption === (route.routeid).toString()}
                                 value={route.routeid}/>
                                 {route.routename}
+
                             </div>
+
                         }, this)}
                         </div>
+
             <div>
                 <div className="pa2">
                     <input

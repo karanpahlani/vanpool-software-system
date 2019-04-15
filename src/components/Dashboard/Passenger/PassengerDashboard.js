@@ -27,10 +27,10 @@ const PassengerDashboard = (props) => {
                             <div className=" bt b--black-10">
 
 
-                                <h1 className="f3 mb3">"0.0"</h1>
+                                <h1 className="f3 mb3">{props.userBalance} USD</h1>
 
                                 <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
-                                    <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Add Funds</a>
+                                    <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Pay</a>
                                 </div>
 
                             </div>
@@ -44,10 +44,9 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Actions</h1>
                             <div className="pa1 bt b--black-10">
                                 <p className="f4 lh-copy measure center">
-
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" onClick ={() => props.onRouteChange('routesDropDown')}>Search for Ride</a>
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 deib white bg-gray" href="https://google.com">Driving Data</a>
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</a>
+                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" onClick ={() => props.onRouteChange('routesDropDown')}>Search for Ride</p>
+                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 deib white bg-gray" >Driving Data</p>
+                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</p>
 
                                 </p>
                             </div>
