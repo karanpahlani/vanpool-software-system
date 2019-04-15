@@ -1,5 +1,7 @@
 import React from 'react';
-import SearchBox from'../SearchBox/SearchBox'
+import SearchBox from'../SearchBox/SearchBox';
+import Scroll from '../Scroll/Scroll';
+
 
 
 
@@ -10,7 +12,8 @@ class RoutesDropDown extends React.Component{
         this.state = {
             selectedOption: '',
             allRoutes: [],
-            id: props.personid
+            id: props.personid,
+            searchfield: ''
         };
         console.log("these are the props", props.personid)
     }
@@ -39,6 +42,10 @@ class RoutesDropDown extends React.Component{
         });
     }
 
+    onSearchChange = (event) => {
+        this.setState({searchfield: event.target.value})
+    }
+
     onSubmit = () => {
         console.log(this.state.selectedOption);
         console.log(this.state.id);
@@ -64,31 +71,35 @@ class RoutesDropDown extends React.Component{
 
     render() {
 
+        const filroute = this.state.allRoutes.filter(allRoutes => {
+            return allRoutes.routename.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        })
 
         return( <div>
 
-            <div>
-                <SearchBox/>
+                <SearchBox searchChange={this.onSearchChange}/>
+                <div className="pv4 dark-gray  f2 lh-title ">
+
                 List of Current Routes:
 
             </div>
                         <div>
-                        {this.state.allRoutes.map(function (route) {
+                        {filroute.map(function (route) {
 
-                            return<div onChange={this.handleChange.bind(this)}>
-                                <input type="radio" name={route.routename}  checked = {this.state.selectedOption === (route.routeid).toString()}
+                            return <div className="pa2 flex items-center mb2 mw5  center fn bg-light-red .shadow-3" onChange={this.handleChange.bind(this)}>
+                                <input    type="radio" name={route.routename}  checked = {this.state.selectedOption === (route.routeid).toString()}
                                 value={route.routeid}/>
                                 {route.routename}
                             </div>
                         }, this)}
                         </div>
             <div>
-                <div className="">
+                <div className="pa2">
                     <input
                         onClick={this.onSubmit}
-                        className="b ph3 pv2 input-reset ba b--black bg-gray grow pointer f6 dib"
+                        className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f6 dib"
                         type="submit"
-                        value="submit"
+                        value="SUBMIT"
                     />
                 </div>
             </div>
