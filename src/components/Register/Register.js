@@ -28,22 +28,14 @@ class Register extends React.Component {
         e.preventDefault();
 
         if (this.validateForm()) {
-            let fields = {};
-            fields["name"] = "";
-            fields["email"] = "";
-            fields["type"] = "";
-            fields["password"] = "";
-            this.setState({fields:fields});
-            alert("Form submitted");
-
-            /*fetch('http://localhost:3000/register', {
+            fetch('http://localhost:3000/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    name: "m",
-                    email: "m@m.com",
-                    password: "m",
-                    type: "passenger"
+                    name: this.fields["name"],
+                    email: this.fields["email"],
+                    password: this.fields["password"],
+                    type: this.fields["type"]
                 })
             })
                 .then(response => response.json())
@@ -52,7 +44,7 @@ class Register extends React.Component {
                         this.props.loadUser(user);
                         this.props.onRouteChange('home');
                     }
-                })*/
+                })
         }
     }
 
