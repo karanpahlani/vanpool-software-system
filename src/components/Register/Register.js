@@ -28,7 +28,15 @@ class Register extends React.Component {
         e.preventDefault();
 
         if (this.validateForm()) {
-            fetch('http://localhost:3000/register', {
+            let fields = {};
+            fields["name"] = "";
+            fields["email"] = "";
+            fields["type"] = "";
+            fields["password"] = "";
+            this.setState({fields:fields});
+            alert("Form submitted");
+
+            /*fetch('http://localhost:3000/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -44,7 +52,7 @@ class Register extends React.Component {
                         this.props.loadUser(user);
                         this.props.onRouteChange('home');
                     }
-                })
+                })*/
         }
     }
 
@@ -97,7 +105,7 @@ class Register extends React.Component {
             errors["type"] = "*Please enter Driver or Passenger.";
         }
 
-        if (typeof fields["password"] !== "undefined") {
+        if (typeof fields["type"] !== "undefined") {
             if (!fields["type"].match(/(Driver)|(Passenger)/)) {
                 formIsValid = false;
                 errors["type"] = "*Please enter Driver or Passenger.";
