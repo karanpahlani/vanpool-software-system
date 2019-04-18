@@ -5,6 +5,7 @@ import Register from './components/Register/Register';
 import './App.css';
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
+import DeleteAccount from "./components/DeleteAccount/DeleteAccount";
 import Navbar from "./components/Navbar/Navbar"
 import CreateRoute from "./components/CreateRoute/CreateRoute"
 import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount"
@@ -142,6 +143,14 @@ class App extends Component {
                     <div>
                         <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
                         <EditDriverAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+            case 'deleteAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <DeleteAccount loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
 

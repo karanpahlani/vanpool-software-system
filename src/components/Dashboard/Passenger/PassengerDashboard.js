@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const PassengerDashboard = (props) => {
     return(
         <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 mv6 bw2 shadow-5"}>
@@ -87,9 +85,15 @@ const PassengerDashboard = (props) => {
                             </div>
                         </article>
                     </div>
-
                 </article>
 
+                <article className="cf">
+                    <div className="fl pa2 w-100 tc">
+                        <article className="center m3 mw-100 br3  ba b--black-10 ">
+                            <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('deleteAccount')}>Delete Account</a>
+                        </article>
+                    </div>
+                </article>
             </div>
         </div>
     );
