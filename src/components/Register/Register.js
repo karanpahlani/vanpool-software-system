@@ -92,13 +92,6 @@ class Register extends React.Component {
             }
         }
 
-        /*if (typeof fields["type"] !== "undefined") {
-            if (fields["type"].toString == ('Passenger' || 'Driver')) {
-                formIsValid = false;
-                errors["type"] = "*Please enter Passenger or Driver.";
-            }
-        }*/
-
         this.setState({
             errors: errors
         });
@@ -125,7 +118,6 @@ class Register extends React.Component {
                         <div className="errorMsg">{this.state.errors.password}</div>
                         <label>Type:</label>
                         <input type="text" name="types" value={this.state.fields.type} onChange={this.handleChange} />
-                        <div className="errorMsg">{this.state.errors.type}</div>
                         <input type="submit" className="button"  value="Sign Up"/>
                     </form>
                 </div>
