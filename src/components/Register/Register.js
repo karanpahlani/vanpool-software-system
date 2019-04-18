@@ -92,6 +92,18 @@ class Register extends React.Component {
             }
         }
 
+        if (!fields["type"]) {
+            formIsValid = false;
+            errors["type"] = "*Please enter Driver or Passenger.";
+        }
+
+        if (typeof fields["password"] !== "undefined") {
+            if (!fields["type"].match(/(Driver)|(Passenger)/)) {
+                formIsValid = false;
+                errors["type"] = "*Please enter Driver or Passenger.";
+            }
+        }
+
         this.setState({
             errors: errors
         });
@@ -103,8 +115,8 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div id="main-registration-container">
-                <div id="sign_up">
+            <div class="container">
+                <div id="register">
                     <h3>Sign Up</h3>
                     <form method="post"  name="sign_up"  onSubmit= {this.submitForm} >
                         <label>Name:</label>
@@ -118,6 +130,7 @@ class Register extends React.Component {
                         <div className="errorMsg">{this.state.errors.password}</div>
                         <label>Type:</label>
                         <input type="text" name="types" value={this.state.fields.type} onChange={this.handleChange} />
+                        <div className="errorMsg">{this.state.errors.type}</div>
                         <input type="submit" className="button"  value="Sign Up"/>
                     </form>
                 </div>
