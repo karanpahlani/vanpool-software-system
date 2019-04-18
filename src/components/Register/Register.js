@@ -26,15 +26,16 @@ class Register extends React.Component {
 
     submitForm(e) {
         e.preventDefault();
+
         if (this.validateForm()) {
             fetch('http://localhost:3000/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    name: this.fields["name"],
-                    email: this.fields["email"],
-                    password: this.fields["password"],
-                    type: this.fields["type"]
+                    name: "m",
+                    email: "m@m.com",
+                    password: "m",
+                    type: "passenger"
                 })
             })
                 .then(response => response.json())
@@ -44,13 +45,6 @@ class Register extends React.Component {
                         this.props.onRouteChange('home');
                     }
                 })
-
-            let fields = {};
-            fields["name"] = "";
-            fields["email"] = "";
-            fields["password"] = "";
-            fields["type"] = "";
-            this.setState({fields:fields});
         }
     }
 
@@ -130,7 +124,7 @@ class Register extends React.Component {
                         <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange}   />
                         <div className="errorMsg">{this.state.errors.password}</div>
                         <label>Type:</label>
-                        <input type="text" name="type" value={this.state.fields.type} onChange={this.handleChange} />
+                        <input type="text" name="types" value={this.state.fields.type} onChange={this.handleChange} />
                         <div className="errorMsg">{this.state.errors.type}</div>
                         <input type="submit" className="button"  value="Sign Up"/>
                     </form>
