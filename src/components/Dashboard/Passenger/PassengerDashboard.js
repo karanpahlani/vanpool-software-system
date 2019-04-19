@@ -28,9 +28,7 @@ const PassengerDashboard = (props) => {
 
                                 <h1 className="f3 mb3">${props.userBalance}</h1>
 
-                                <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
-                                    <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Add Funds</a>
-                                </div>
+
 
                             </div>
                         </article>
@@ -46,7 +44,6 @@ const PassengerDashboard = (props) => {
 
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Search for Ride</a>
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Payment Info</a>
-                                    <a className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" href="#0">Driving Data</a>
                                     <a className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editRiderAccount')}>Edit Account</a>
 
                                 </p>

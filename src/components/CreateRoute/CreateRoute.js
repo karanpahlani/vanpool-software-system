@@ -82,7 +82,7 @@ class CreateRoute extends React.Component {
                                                 type="start"
                                                 name="start"
                                                 aria-describedby="name-desc"
-                                                placeholder="Starting address"
+                                                placeholder="Departing from"
                                                 onChange={this.onCreateRouteStartChange}
                                             />
                                         </div>
@@ -95,8 +95,8 @@ class CreateRoute extends React.Component {
                                                 type="stop"
                                                 name="stop"
                                                 aria-describedby="name-desc"
-                                                placeholder="Destination address"
-                                                n
+                                                placeholder="Destination"
+                                                onChange={this.onCreateRouteStopChange}
                                             />
                                         </div>
 
