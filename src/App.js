@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import Register from './components/Register/Register'
+import RoutesDropDown from './components/RoutesDropDown/RoutesDropDown';
 import './App.css';
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
@@ -26,7 +27,6 @@ class App extends Component {
                 id:'',
                 name: '',
                 email: '',
-                entries: 0,
                 joined: '',
                 type: '',
                 balance: '',
@@ -39,17 +39,16 @@ class App extends Component {
 
     loadUser = (data) => {
         this.setState({user:  {
-                id: data.userData.id,
+                id: data.userData.userid,
                 name: data.userData.name,
                 email: data.userData.email,
-                entries: data.userData.entries,
+                balance: data.userData.user_balance,
                 joined: data.userData.joined,
                 type: data.type,
                 routename: data.routename,
-                balance: data.userData.balance
 
             }})
-            
+
 
         console.log('current user type of the state is: ', this.state.user.type)
         console.log('Active Rides: ', this.state.user.routename)
@@ -74,6 +73,12 @@ class App extends Component {
         const {isSignedIn, route} = this.state;
         let component = null
         switch(route) {
+            case 'routesDropDown' :
+                component =
+                    <div>
+                        <RoutesDropDown  loadUser={this.loadUser} onRouteChange={this.onRouteChange} personid={this.state.user.id}/>
+                    </div>
+                break;
             case 'signin'  :
                 component =
                     <div>
@@ -89,16 +94,14 @@ class App extends Component {
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
-
             case 'home':
-
-
                 if(this.state.user.type === 'passenger'){
                     //alert("passanger landing");
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <PassengerDashboard activeRide = {this.state.user.routename} userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+
+                            <PassengerDashboard activeRide = {this.state.user.routename} userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
 
                         </div>
                 } else if(this.state.user.type === 'driver') {
@@ -111,8 +114,6 @@ class App extends Component {
                 }
 
                 break;
-
-
             case 'signup':
                 component =
                     <div>
