@@ -7,6 +7,10 @@ import './App.css';
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 import Navbar from "./components/Navbar/Navbar"
+import CreateRoute from "./components/CreateRoute/CreateRoute"
+import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount"
+import EditDriverAccount from "./components/EditAccount/Driver/EditDriverAccount";
+
 
 
 
@@ -25,8 +29,9 @@ class App extends Component {
                 email: '',
                 joined: '',
                 type: '',
-                balance: '$0.00',
+                balance: '',
                 routename: ''
+
             }
 
         }
@@ -41,10 +46,14 @@ class App extends Component {
                 joined: data.userData.joined,
                 type: data.type,
                 routename: data.routename,
+
             }})
 
+
         console.log('current user type of the state is: ', this.state.user.type)
-        console.log('Active Rides  ', this.state.user.routename)
+        console.log('Active Rides: ', this.state.user.routename)
+        //console.log(this.state.user);
+
     }
 
 
@@ -73,7 +82,7 @@ class App extends Component {
             case 'signin'  :
                 component =
                     <div>
-                        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
@@ -81,7 +90,7 @@ class App extends Component {
             case 'signout'  :
                 component =
                     <div>
-                        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
@@ -91,14 +100,16 @@ class App extends Component {
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn}  userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+
                             <PassengerDashboard activeRide = {this.state.user.routename} userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+
                         </div>
                 } else if(this.state.user.type === 'driver') {
                     //alert("driver landing");
                     component =
                         <div>
                             <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                            <DriverDashboard  userBalance={this.state.user.entries} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+                            <DriverDashboard  userBalance={this.state.user.balance} userType={this.state.user.type} userName={this.state.user.name} isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
                         </div>
                 }
 
@@ -111,7 +122,34 @@ class App extends Component {
                     </div>
                 break;
 
+            case 'createRoute':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <CreateRoute onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+            case 'editRiderAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <EditRiderAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+            case 'editDriverAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <EditDriverAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                    </div>
+                break;
+
+
+
             default:
+
 
         }
 

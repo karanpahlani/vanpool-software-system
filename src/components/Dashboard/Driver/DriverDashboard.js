@@ -4,7 +4,7 @@ import React from 'react';
 
 const DriverDashboard = (props) => {
     return(
-        <div className={" w-80 mw7 tc bg-light-red dib br3 pa2 ma5 grow bw2 shadow-5"}>
+        <div className={" w-80 mw7 tc bg-light-gray dib br3 pa2 mv6 bw2 shadow-5"}>
             <div>
 
 
@@ -26,7 +26,7 @@ const DriverDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Balance</h1>
                             <div className=" bt b--black-10">
 
-                                <h1 className="f3 mb3">"0.0"</h1>
+                                <h1 className="f3 mb3">${props.userBalance}</h1>
 
                                 <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
                                     <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Withdraw Funds</a>
@@ -48,6 +48,7 @@ const DriverDashboard = (props) => {
                                     <p className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" >Payment Info</p>
                                     <p className="f4 w-90 link dim br3 ph3 pv1 mb1 dib white bg-gray" >Driving Data</p>
                                     <p className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</p>
+
 
                                 </p>
                             </div>
