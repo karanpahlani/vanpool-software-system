@@ -34,8 +34,6 @@ class App extends Component {
                 joined: '',
                 balance: '',
                 type: '',
-
-                balance: '$0.00',
                 routename: ''
 
             }
@@ -71,24 +69,25 @@ class App extends Component {
 
         this.setState({route: route})
 
-    }
+    };
 
     render() {
         const {isSignedIn, route} = this.state;
-        let component = null
+        let component = null;
         switch(route) {
             case 'routesDropDown' :
                 component =
                     <div>
-                        <RoutesDropDown  loadUser={this.loadUser} onRouteChange={this.onRouteChange} personid={this.state.user.id}/>
-                    </div>
+                        <Navbar loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                        <RoutesDropDown loadUser={this.loadUser} onRouteChange={this.onRouteChange} personid={this.state.user.id}/>
+                    </div>;
                 break;
             case 'signin'  :
                 component =
                     <div>
                         <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-                    </div>
+                    </div>;
                 break;
 
             case 'signout'  :

@@ -7,7 +7,7 @@ const SigninNavbar = ({userName, onRouteChange, isSignedIn}) =>{
             return(
                 <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
                     <nav className="f6 fw6 tracked">
-                        <a onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3" href="#" title="Sign In">Already have a account? Sign In</a>
+                        <a onClick ={() => onRouteChange('signin')}  className="pointer link dim white dib mr3" title="Sign In">Already have a account? Sign In</a>
                     </nav>
                 </header>
             );
