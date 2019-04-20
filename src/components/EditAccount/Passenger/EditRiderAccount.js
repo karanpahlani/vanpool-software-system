@@ -13,9 +13,9 @@ const EditRiderAccount = (props) => {
 
                         <article className="w-auto center bg-white pa2 br3 ba b--black-20">
                             <div className="tc">
-                                <img src="http://tachyons.io/img/avatar_1.jpg" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
+                                <img src="https://robohash.org/gk09" className="mw4 br-100 h-100 w-100 dib ba b--black-10 pa2" title="Photo of a kitty staring at you" />
                                 <h1 className="f3 mb2">{props.userName}</h1>
-                                <h2 className="f5 fw4 gray mt0">Rider</h2>
+                                <h2 className="f5 fw4 gray mt0">{props.userType}</h2>
                             </div>
                         </article>
 
@@ -31,19 +31,8 @@ const EditRiderAccount = (props) => {
                                     <form className="center">
 
                                         <div className=" fl pa2 w-50">
-                                            <label htmlFor="firstname" className="tl f7 db mb2">First name</label>
-                                            <input id="firstname" className="input-reset ba b--black-20 f3 pa2 mb2 db w-100" type="text" aria-describedby="name-desc" placeholder={props.userName} />
-                                        </div>
-                                        <div className="fl pa2 w-50">
-                                            <label htmlFor="lastname" className="tl f7 db mb2">Last name</label>
-                                            <input id="lastname" className="input-reset ba b--black-20 f3 pa2 mb2 db w-100" type="text" aria-describedby="name-desc" placeholder="Last name" />
-                                        </div>
-
-                                        <br />
-
-                                        <div className="fl pa2 w-100">
-                                            <label htmlFor="phone" className="tl f7 db mb2">Phone#</label>
-                                            <input id="phone" className="input-reset ba b--black-20 pa2 f3 mb2 db w-100" type="text" aria-describedby="name-desc" placeholder="Phone number" />
+                                            <label htmlFor="name" className="tl f7 db mb2">Name</label>
+                                            <input id="name" className="input-reset ba b--black-20 f3 pa2 mb2 db w-100" type="text" aria-describedby="name-desc" placeholder={props.userName} />
                                         </div>
 
                                         <br />
@@ -55,19 +44,26 @@ const EditRiderAccount = (props) => {
 
                                         <div className="fl pa2 w-100">
                                             <label htmlFor="password" className="tl f7 db mb2">Change Password</label>
-                                            <input id="password" className="input-reset ba b--black-20 pa2 f3 mb2 db w-100" type="text" aria-describedby="name-desc" placeholder="Enter new password" />
+                                            <input id="password"
+                                                   className="input-reset ba b--black-20 pa2 f3 mb2 db w-100"
+                                                   type="password"
+                                                   aria-describedby="password-desc"
+                                                   placeholder="Enter new password" />
                                         </div>
 
-
+                                        <div className="fl pa2 w-100">
+                                            <label htmlFor="password2" className="tl f7 db mb2">Confirm Password</label>
+                                            <input id="password2"
+                                                   className="input-reset ba b--black-20 pa2 f3 mb2 db w-100"
+                                                   type="password"
+                                                   aria-describedby="password2-desc"
+                                                   placeholder="Confirm new password" />
+                                        </div>
 
                                         <br />
                                         <div className="pa2 w5 center">
-                                            <label htmlFor="email" className="tl f7 db mb2">Update your account</label>
-
                                             <a className="f3 w-100 link dim ph3 pv1 dib white bg-gray" href="#0">Submit</a>
                                         </div>
-
-
 
                                     </form>
 
