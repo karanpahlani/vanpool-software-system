@@ -22,15 +22,8 @@ const AdminDashboard = (props) => {
                     <div className="fl w-33 pa2 tc">
 
                         <article className="center m3 mw5 br3  ba b--black-10 ">
-                            <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3"> </h1>
-                            <div className=" bt b--black-10">
+                            <h1 className="f4 bg-white br3  black-60 mv0 pv2 ph3">VSS Site Administration Dashboard</h1>
 
-                             <p></p>
-
-
-
-
-                            </div>
                         </article>
 
 

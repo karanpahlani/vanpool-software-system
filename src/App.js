@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register'
 import RoutesDropDown from './components/RoutesDropDown/RoutesDropDown';
@@ -80,7 +79,7 @@ class App extends Component {
                     joined: data.joined,
                     type: data.type,
                     routename: data.routename,
-                }})
+                }});
 
             console.log("reload happened")
 
@@ -95,10 +94,9 @@ class App extends Component {
                 email: data.userData.email,
                 balance: data.userData.user_balance,
                 joined: data.userData.joined,
-
                 type: data.type,
                 routename: data.routename,
-            }})
+            }});
 
         console.log('current user type of the state is: ', this.state.user.type)
         console.log('Active Rides  ', this.state.user.routename)
@@ -110,15 +108,16 @@ class App extends Component {
 
     onRouteChange = (route) => {
         if(route === 'signout') {
+            sessionStorage.clear();
             this.setState({isSignedIn: false})
 
         } else if (route === 'home'){
-            this.setState({isSignedIn: true} )
+            this.setState({isSignedIn: true} );
             sessionStorage.setItem("loggedin", true);
         }
 
-        this.setState({route: route})
-        sessionStorage.setItem("pageroute", JSON.stringify(this.state.route));
+        this.setState({route: route});
+        sessionStorage.setItem("pageroute", JSON.stringify(route));
 
     };
 

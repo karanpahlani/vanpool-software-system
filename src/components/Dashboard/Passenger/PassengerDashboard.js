@@ -26,7 +26,7 @@ const PassengerDashboard = (props) => {
                             <div className=" bt b--black-10">
 
 
-                                <h1 className="f3 mb3">{props.userBalance} USD</h1>
+                                <h1 className="f3 mb3">{props.userBalance}</h1>
 
 
 
