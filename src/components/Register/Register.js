@@ -24,18 +24,16 @@ class Register extends React.Component {
 
     }
 
-    submitForm(e) {
-        e.preventDefault();
-
+    submitForm() {
         if (this.validateForm()) {
             fetch('http://localhost:3000/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    name: this.fields["name"],
-                    email: this.fields["email"],
-                    password: this.fields["password"],
-                    type: this.fields["type"]
+                    name: this.state.fields["name"],
+                    email: this.state.fields["email"],
+                    password: this.state.fields["password"],
+                    type: this.state.fields["type"]
                 })
             })
                 .then(response => response.json())
@@ -115,10 +113,9 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div class="container">
                 <div id="register">
                     <h3>Sign Up</h3>
-                    <form method="post"  name="sign_up"  onSubmit= {this.submitForm} >
+                    <form name="sign_up"  onSubmit= {this.submitForm} >
                         <label>Name:</label>
                         <input type="text" name="name" value={this.state.fields.name} onChange={this.handleChange} />
                         <div className="errorMsg">{this.state.errors.name}</div>
@@ -134,8 +131,6 @@ class Register extends React.Component {
                         <input type="submit" className="button"  value="Sign Up"/>
                     </form>
                 </div>
-            </div>
-
         );
     }
 }
