@@ -7,7 +7,6 @@ const PassengerDashboard = (props) => {
         <div className={" w-80 mw7 tc bg-light-blue dib br3 pa2 mv6 bw2 shadow-5"}>
             <div>
 
-
                 <article className="cf">
                     <div className="fl pa2 w-33 tc">
 
@@ -29,9 +28,8 @@ const PassengerDashboard = (props) => {
 
                                 <h1 className="f3 mb3">{props.userBalance} USD</h1>
 
-                                <div className="bt b--black-10 pa0 bg-white br3 br--bottom">
-                                    <a className="f4 w-90 link dim br3 ph3 pv2 mb2 mt2 dib white bg-gray" href="#0">Pay</a>
-                                </div>
+
+
 
                             </div>
                         </article>
@@ -44,9 +42,11 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Actions</h1>
                             <div className="pa1 bt b--black-10">
                                 <p className="f4 lh-copy measure center">
+
+
                                     <p className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 dib white bg-gray" onClick ={() => props.onRouteChange('routesDropDown')}>Search for Ride</p>
-                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1 mb1 deib white bg-gray" >Driving Data</p>
-                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editAccount')}>Edit Account</p>
+                                    <p className="f4 w-90 pointer link dim br3 ph3 pv1  dib white bg-gray" onClick ={() => props.onRouteChange('editRiderAccount')}>Edit Account</p>
+
 
                                 </p>
                             </div>
@@ -80,17 +80,14 @@ const PassengerDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Ride History</h1>
                             <div className=" bt b--black-10">
 
-
                                 <div className="b--black-10 pa2">Ride History Listing From DB</div>
                                 <div className="b--black-10 pa2 bt">Ride History Listing From DB</div>
-
 
                             </div>
                         </article>
                     </div>
 
                 </article>
-
 
             </div>
         </div>

@@ -2,14 +2,12 @@ import React from 'react';
 
 
 
-const Navbar = ({userName, onRouteChange, isSignedIn}) =>{
+const SigninNavbar = ({userName, onRouteChange, isSignedIn}) =>{
         if(!isSignedIn){
             return(
                 <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-
-                    <nav className="f6 fw6 ttu tracked">
-                        <p onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3"  title="Sign In">Sign In</p>
-
+                    <nav className="f6 fw6 tracked">
+                        <a onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3" href="#" title="Sign In">Already have a account? Sign In</a>
                     </nav>
                 </header>
             );
@@ -23,12 +21,10 @@ const Navbar = ({userName, onRouteChange, isSignedIn}) =>{
                                 <p></p>
                            </div>
                            <div className="fl  w-30 tc">
-                               <p onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" title="Home">Home</p>
+                               <a onClick ={() => onRouteChange('home')}  className="link dim white dib mr3" href="#" title="Home">Home</a>
                            </div>
                            <div className="fl  w-30 tc">
-
-                               <p onClick ={() => onRouteChange('signin')}  className="link dim white dib mr3" title="Sign In">Sign Out</p>
-
+                               <a onClick ={() => onRouteChange('signout')} className="link dim white dib mr3" href="#" title="Sign In">Sign Out</a>
                            </div>
                            <div className="fl  w-20 tc">
                                <p></p>
@@ -41,4 +37,4 @@ const Navbar = ({userName, onRouteChange, isSignedIn}) =>{
         }
 };
 
-export default Navbar;
+export default SigninNavbar;
