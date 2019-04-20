@@ -51,15 +51,6 @@ const EditRiderAccount = (props) => {
                                                    placeholder="Enter new password" />
                                         </div>
 
-                                        <div className="fl pa2 w-100">
-                                            <label htmlFor="password2" className="tl f7 db mb2">Confirm Password</label>
-                                            <input id="password2"
-                                                   className="input-reset ba b--black-20 pa2 f3 mb2 db w-100"
-                                                   type="password"
-                                                   aria-describedby="password2-desc"
-                                                   placeholder="Confirm new password" />
-                                        </div>
-
                                         <br />
                                         <div className="pa2 w5 center">
                                             <a className="f3 w-100 link dim ph3 pv1 dib white bg-gray" href="#0">Submit</a>
