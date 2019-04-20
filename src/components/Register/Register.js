@@ -16,21 +16,21 @@ class Register extends React.Component{
 
     onNameChange = (event) => {
         this.setState({name: event.target.value})
-    }
+    };
 
     onTypeChange = (event) =>{
         console.log("user type:", event.target.value)
         this.setState( {type: event.target.value})
-    }
+    };
 
     onEmailChange = (event) => {
         this.setState({email: event.target.value})
-    }
+    };
 
     onPasswordChange = (event) => {
 
         this.setState({password: event.target.value})
-    }
+    };
 
     onSubmitSignUp = () => {
         fetch('http://localhost:3000/register', {
@@ -53,7 +53,7 @@ class Register extends React.Component{
                     this.props.onRouteChange('home');
                 }
             })
-    }
+    };
 
 
 
@@ -99,7 +99,7 @@ class Register extends React.Component{
                                         <div className="mv3">
                                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                                             <input
-                                                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                                 type="password"
                                                 name="password"
                                                 id="password"
@@ -108,15 +108,22 @@ class Register extends React.Component{
                                             />
                                         </div>
 
-                                        <select id="types" className="w-100 db h2 f6 bg-near-white ba b--sliver gray" name="type" onChange={this.onTypeChange}>
-                                            <option value="passenger">Passenger</option>
-                                            <option value="driver">Driver</option>
-                                        </select>
+                                        <div className="mv3">
+                                            <label className="db fw6 lh-copy f6" htmlFor="types">Select user type</label>
+                                            <select id="types"
+                                                    className="w-40 db h2 f6 bg-white b--black"
+                                                    name="type"
+                                                    onChange={this.onTypeChange}>
+
+                                                <option className="bg-light-gray" value="passenger">Passenger</option>
+                                                <option className="bg-light-gray" value="driver">Driver</option>
+                                            </select>
+                                        </div>
 
                                     </fieldset>
                                     <div className="">
                                         <input
-                                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                            className="b ph3 pv2 mv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                                             type="submit"
                                             value="Sign up"
                                             onClick={this.onSubmitSignUp}
