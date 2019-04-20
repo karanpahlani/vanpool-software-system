@@ -13,23 +13,72 @@ import Navbar from "./components/Navbar/Navbar"
 class App extends Component {
 
 
-    constructor(){
-        super();
-        this.state = {
-            input: '',
-            route: 'signin',
-            isSignedIn: false,
-            user:{
-                id:'',
-                name: '',
-                email: '',
-                joined: '',
-                type: '',
-                balance: '$0.00',
-                routename: ''
+    constructor(props){
+        super(props);
+
+        const u = JSON.parse(sessionStorage.getItem("user"))
+
+        if(u === null){
+            this.state = {
+                input: '',
+                route: 'signin',
+                isSignedIn: false,
+
+
+                user: {
+                    id:  '',
+                    name: '',
+                    email: '',
+                    joined: '',
+                    type:  '',
+                    balance: '$0.00',
+                    routename: ''
+                }
+        }}
+
+        else {
+            this.state = {
+                input: '',
+                route: JSON.parse(sessionStorage.getItem("pageroute")) || 'signin',
+                isSignedIn: JSON.parse(sessionStorage.getItem("loggedin")) || false,
+
+
+                user: {
+                    id: u.id || '',
+                    name: u.name || '',
+                    email: u.email || '',
+                    joined: '',
+                    type: u.type || '',
+                    balance: u.balance || '$0.00',
+                    routename: u.routename || ''
+                }
+
             }
+        }
+
+
+        console.log("conctructor called: ",this.state)
+
+
+
+    }
+
+    reLoadUser = (data) =>{
+        if (data != null){
+            this.setState({user:  {
+                    id: data.id,
+                    name: data.name,
+                    email: data.email,
+                    balance: data.balance,
+                    joined: data.joined,
+                    type: data.type,
+                    routename: data.routename,
+                }})
+
+            console.log("reload happened")
 
         }
+
     }
 
     loadUser = (data) => {
@@ -45,6 +94,7 @@ class App extends Component {
 
         console.log('current user type of the state is: ', this.state.user.type)
         console.log('Active Rides  ', this.state.user.routename)
+        sessionStorage.setItem("user", JSON.stringify(this.state.user));
     }
 
 
@@ -54,11 +104,15 @@ class App extends Component {
 
         } else if (route === 'home'){
             this.setState({isSignedIn: true} )
+            sessionStorage.setItem("loggedin", true);
         }
 
         this.setState({route: route})
+        sessionStorage.setItem("pageroute", JSON.stringify(this.state.route));
 
     }
+
+
 
     render() {
         const {isSignedIn, route} = this.state;
