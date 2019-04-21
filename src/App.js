@@ -108,7 +108,7 @@ class App extends Component {
         }
 
         this.setState({route: route})
-        sessionStorage.setItem("pageroute", JSON.stringify(this.state.route));
+        sessionStorage.setItem("pageroute", JSON.stringify(route));
 
     }
 
