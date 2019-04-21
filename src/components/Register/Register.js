@@ -1,39 +1,48 @@
 import React from 'react';
-import './Register.css';
 
 
-class Register extends React.Component {
-    constructor(props) {
+class Register extends React.Component{
+
+    constructor(props){
         super(props);
 
         this.state = {
-            fields: {},
+            email:'',
+            password: '',
+            name: '',
+            type: 'passenger',
             errors: {}
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.submitForm = this.submitForm.bind(this);
-    };
-
-    handleChange(e) {
-        let fields = this.state.fields;
-        fields[e.target.name] = e.target.value;
-        this.setState({
-            fields
-        });
-
     }
 
-    submitForm() {
+    onNameChange = (event) => {
+        this.setState({name: event.target.value})
+    }
+
+    onTypeChange = (event) =>{
+        console.log("user type:", event.target.value)
+        this.setState( {type: event.target.value})
+    }
+
+    onEmailChange = (event) => {
+        this.setState({email: event.target.value})
+    }
+
+    onPasswordChange = (event) => {
+
+        this.setState({password: event.target.value})
+    }
+
+    onSubmitSignUp = () => {
         if (this.validateForm()) {
             fetch('http://localhost:3000/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    name: this.state.fields["name"],
-                    email: this.state.fields["email"],
-                    password: this.state.fields["password"],
-                    type: this.state.fields["type"]
+                    email: this.state.email,
+                    password: this.state.password,
+                    name: this.state.name,
+                    type: this.state.type
                 })
             })
                 .then(response => response.json())
@@ -47,58 +56,48 @@ class Register extends React.Component {
     }
 
     validateForm() {
+        let name = this.state.name;
+        let password = this.state.password;
+        let email = this.state.email;
 
-        let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
 
-        if (!fields["name"]) {
+        if (!name) {
             formIsValid = false;
             errors["name"] = "*Please enter your name.";
         }
 
-        if (typeof fields["name"] !== "undefined") {
-            if (!fields["name"].match(/^[a-zA-Z ]*$/)) {
+        if (typeof name !== "undefined") {
+            if (!name.match(/^[a-zA-Z ]*$/)) {
                 formIsValid = false;
                 errors["name"] = "*Please enter alphabet characters only.";
             }
         }
 
-        if (!fields["email"]) {
+        if (!email) {
             formIsValid = false;
             errors["email"] = "*Please enter your email-ID.";
         }
 
-        if (typeof fields["email"] !== "undefined") {
+        if (typeof email !== "undefined") {
             //regular expression for email validation
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if (!pattern.test(fields["email"])) {
+            if (!pattern.test(email)) {
                 formIsValid = false;
                 errors["email"] = "*Please enter valid email-ID.";
             }
         }
 
-        if (!fields["password"]) {
+        if (!password) {
             formIsValid = false;
             errors["password"] = "*Please enter your password.";
         }
 
-        if (typeof fields["password"] !== "undefined") {
-            if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+        if (typeof password !== "undefined") {
+            if (!password.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
                 formIsValid = false;
                 errors["password"] = "*Please enter secure and strong password.";
-            }
-        }
-
-        if (!fields["type"]) {
-            formIsValid = false;
-            errors["type"] = "*Please enter Driver or Passenger.";
-        }
-
-        if (typeof fields["type"] !== "undefined") {
-            if (!fields["type"].match(/(Driver)|(Passenger)/)) {
-                formIsValid = false;
-                errors["type"] = "*Please enter Driver or Passenger.";
             }
         }
 
@@ -112,25 +111,84 @@ class Register extends React.Component {
 
 
     render() {
+
+
         return (
-                <div id="register">
-                    <h3>Sign Up</h3>
-                    <form name="sign_up"  onSubmit= {this.submitForm} >
-                        <label>Name:</label>
-                        <input type="text" name="name" value={this.state.fields.name} onChange={this.handleChange} />
-                        <div className="errorMsg">{this.state.errors.name}</div>
-                        <label>Email:</label>
-                        <input type="text" name="email" value={this.state.fields.email} onChange={this.handleChange}  />
-                        <div className="errorMsg">{this.state.errors.email}</div>
-                        <label>Password:</label>
-                        <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange}   />
-                        <div className="errorMsg">{this.state.errors.password}</div>
-                        <label>Type:</label>
-                        <input type="text" name="type" value={this.state.fields.type} onChange={this.handleChange} />
-                        <div className="errorMsg">{this.state.errors.type}</div>
-                        <input type="submit" className="button"  value="Sign Up"/>
-                    </form>
-                </div>
+            <div>
+                <article className="br3 ba dark-gray  b--black-10 mv4 w-100 w-70-m w-25-l mw7 center">
+                    <main className="pa4 black-80">
+                        <div className="measure center">
+
+                            <fieldset id="sign_up" className="ba b--transparent  ph0 mh0">
+                                <legend className="f2 fw6 ph0 mh0">Sign Up</legend>
+
+                                <div className="mt3">
+                                    <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                                    <input
+                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                        type="name"
+                                        name="name"
+                                        id="name"
+                                        onChange={this.onNameChange}
+                                    />
+                                </div>
+
+                                <div className="errorMsg">{this.state.errors.name}</div>
+
+                                <div className="mt3">
+                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                                    <input
+                                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                        type="email"
+                                        name="email-address"
+                                        id="email-address"
+                                        onChange={this.onEmailChange}
+                                    />
+                                </div>
+
+                                <div className="errorMsg">{this.state.errors.email}</div>
+
+                                <div className="mv3">
+                                    <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                                    <input
+                                        className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        onChange={this.onPasswordChange}
+                                    />
+                                </div>
+
+                                <div className="errorMsg">{this.state.errors.password}</div>
+
+                                <div>
+
+                                    <select id="types" className="w-100 db h2 f6 bg-near-white ba b--sliver gray" name="type" onChange={this.onTypeChange}>
+                                        <option value="passenger">Passenger</option>
+                                        <option value="driver">Driver</option>
+
+                                    </select>
+
+                                </div>
+
+                            </fieldset>
+
+                            <div className="">
+                                <input
+                                    onClick={this.onSubmitSignUp}
+                                    className="b ph3 pv2 input-reset ba b--black bg-gray grow pointer f6 dib"
+                                    type="submit"
+                                    value="Sign Up"
+
+                                />
+                            </div>
+                        </div>
+
+                    </main>
+                </article>
+            </div>
+
+
         );
     }
 }
