@@ -45,6 +45,9 @@ class RoutesDropDown extends React.Component{
     onSearchChange = (event) => {
         this.setState({searchfield: event.target.value})
     }
+    goBack =() =>{
+        this.props.onRouteChange('home');
+    }
 
     onSubmit = () => {
         console.log(this.state.selectedOption);
@@ -76,14 +79,26 @@ class RoutesDropDown extends React.Component{
             return allRoutes.routename.toLowerCase().includes(this.state.searchfield.toLowerCase());
         })
 
-        return( <div>
+        return(
 
-                <SearchBox searchChange={this.onSearchChange}/>
-                <div className="pv4 dark-gray  f2 lh-title ">
 
-                List of Current Routes:
 
-            </div>
+            <div>
+                <div >
+                    <input className="   w-25 .left-0 input-reset    bg-blue grow pointer f6 "
+                           onClick={this.goBack}
+                           type="submit"
+                           value="BACK"
+                    />
+                    <SearchBox className =  ""
+                        searchChange={this.onSearchChange}/>
+                </div>
+
+                    <div className="pv4 dark-gray  f2 lh-title ">
+
+                    List of Current Routes:
+
+                    </div>
 
                         <div>
                         {filroute.map(function (route) {

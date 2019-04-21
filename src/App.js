@@ -116,9 +116,12 @@ class App extends Component {
             sessionStorage.setItem("loggedin", true);
         }
 
-        this.setState({route: route});
 
+        this.setState({route: route})
         sessionStorage.setItem("pageroute", JSON.stringify(route));
+
+
+        
 
     };
 
