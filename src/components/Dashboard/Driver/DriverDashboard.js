@@ -5,7 +5,7 @@ import React from 'react';
 const DriverDashboard = (props) => {
     return(
 
-        <div className={" w-80 mw7 tc bg-light-red dib br3 pa2 ma5 grow bw2 shadow-5"}>
+        <div className={" w-80 mv6 mw7 tc bg-light-red dib br3 pa2 ma5 bw2 shadow-5"}>
 
             <div>
 
@@ -28,7 +28,7 @@ const DriverDashboard = (props) => {
                             <h1 className="f4 bg-white br3 br--top black-60 mv0 pv2 ph3">Balance</h1>
                             <div className=" bt b--black-10">
 
-                                <h1 className="f3 mb3">${props.userBalance}</h1>
+                                <h1 className="f3 mb3">{props.userBalance}</h1>
 
 
 
