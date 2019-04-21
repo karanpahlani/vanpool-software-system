@@ -198,7 +198,7 @@ class App extends Component {
                 component =
                     <div>
                         <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
-                        <EditRiderAccount userType={this.state.user.type} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <EditRiderAccount userType={this.state.user.type} userName={this.state.user.name} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                     </div>
                 break;
 
