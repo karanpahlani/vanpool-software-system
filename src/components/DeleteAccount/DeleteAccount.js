@@ -6,9 +6,9 @@ class DeleteAccount extends React.Component{
         super(props);
     }
 
-    removeAccount(){
+    removeAccount(e){
         const {onRouteChange} = this.props;
-        
+
         fetch('http://localhost:3000/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
