@@ -45,11 +45,11 @@ class Register extends React.Component{
         })
             .then(response => response.json())
             .then(user => {
-                alert("if statement called");
+              
                 if (user.loggedIn) {
-                    alert("loaduser called");
+                 
                     this.props.loadUser(user);
-                    alert("onRouteChange called");
+                  
                     this.props.onRouteChange('home');
                 }
             })
