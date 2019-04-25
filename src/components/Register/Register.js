@@ -34,6 +34,7 @@ class Register extends React.Component{
     };
 
     onSubmitSignUp = () => {
+
         if (this.validateForm()) {
             console.log(this.validateForm());
             fetch('http://localhost:3000/register', {
@@ -45,6 +46,7 @@ class Register extends React.Component{
                     name: this.state.name,
                     type: this.state.type
                 })
+
             })
                 .then(response => response.json())
                 .then(user => {
