@@ -10,6 +10,8 @@ class Register extends React.Component{
             email:'',
             password: '',
             name: '',
+            question1: '',
+            question2: '',
             type: 'passenger',
             errors: {}
         }
@@ -28,9 +30,12 @@ class Register extends React.Component{
         this.setState({email: event.target.value})
     };
 
-    onPasswordChange = (event) => {
+    onQuestion1Change = (event) => {
+        this.setState({question1: event.target.value})
+    };
 
-        this.setState({password: event.target.value})
+    onQuestion2Change = (event) => {
+        this.setState({question2: event.target.value})
     };
 
     onSubmitSignUp = () => {
@@ -44,6 +49,8 @@ class Register extends React.Component{
                     email: this.state.email,
                     password: this.state.password,
                     name: this.state.name,
+                    //question1: this.state.question1,
+                    //question2: this.state.question2,
                     type: this.state.type
                 })
 
@@ -62,6 +69,8 @@ class Register extends React.Component{
         let name = this.state.name;
         let password = this.state.password;
         let email = this.state.email;
+        let question1 = this.state.question1;
+        let question2 = this.state.question2;
 
         let errors = {};
         let formIsValid = true;
@@ -102,6 +111,16 @@ class Register extends React.Component{
                 formIsValid = false;
                 errors["password"] = "*Please enter secure and strong password.";
             }
+        }
+
+        if (!question1) {
+            formIsValid = false;
+            errors["question1"] = "*Please enter a response to the first security question.";
+        }
+
+        if (!question2) {
+            formIsValid = false;
+            errors["question2"] = "*Please enter a response to the first security question.";
         }
 
         this.setState({
@@ -159,6 +178,30 @@ class Register extends React.Component{
                                             />
                                         </div>
                                         <div className="errorMsg">{this.state.errors.password}</div>
+                                        <div className="mv3">
+                                            <label className="db fw6 lh-copy f6" htmlFor="password">Security Question 1: Where were you born?</label>
+                                            <input
+                                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                                type="question1"
+                                                name="question1"
+                                                id="question1"
+                                                placeholder="Question 1"
+                                                onChange={this.onQuestion1Change}
+                                            />
+                                        </div>
+                                        <div className="errorMsg">{this.state.errors.question1}</div>
+                                        <div className="mv3">
+                                            <label className="db fw6 lh-copy f6" htmlFor="password">Security Question 2: What is your favorite color?</label>
+                                            <input
+                                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                                type="question2"
+                                                name="question2"
+                                                id="question2"
+                                                placeholder="Question 2"
+                                                onChange={this.onQuestion2Change}
+                                            />
+                                        </div>
+                                        <div className="errorMsg">{this.state.errors.question2}</div>
                                         <div className="mv3">
                                             <label className="db fw6 lh-copy f6" htmlFor="types">Select user type</label>
                                             <select id="types"

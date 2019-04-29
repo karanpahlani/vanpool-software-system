@@ -6,6 +6,7 @@ import './App.css';
 import PassengerDashboard from "./components/Dashboard/Passenger/PassengerDashboard";
 import DriverDashboard from "./components/Dashboard/Driver/DriverDashboard";
 import Navbar from "./components/Navbar/Navbar"
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import CreateRoute from "./components/CreateRoute/CreateRoute"
 import EditRiderAccount from "./components/EditAccount/Passenger/EditRiderAccount"
 import EditDriverAccount from "./components/EditAccount/Driver/EditDriverAccount";
@@ -13,9 +14,7 @@ import SigninNavbar from "./components/SigninNavbar/SigninNavbar"
 import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
 import AddStop from "./components/AddStop/AddStop";
 import AddVan from "./components/AddVan/AddVan";
-
-
-
+import ChangePassword from "./components/ChangePassword/ChangePassword";
 
 class App extends Component {
 
@@ -145,12 +144,25 @@ class App extends Component {
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>;
                 break;
-
             case 'signout'  :
                 component =
                     <div>
                         <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
+            case 'forgotPassword':
+                component =
+                    <div>
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <ForgotPassword onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
+            case 'changePassword':
+                component =
+                    <div>
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <ChangePassword onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
             case 'home':
