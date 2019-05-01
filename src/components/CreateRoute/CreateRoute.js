@@ -11,8 +11,43 @@ class CreateRoute extends React.Component {
             route: '',
             start: '',
             stop: '',
+            vans: '',
+            allStops: [],
+            allVans: [],
         }
     }
+
+    componentDidMount(){
+        this.fetchStopsOptions();
+        this.fetchVanOptions();
+    }
+
+    fetchStopsOptions(){
+        fetch('http://localhost:3000/stops')
+            .then((res) => {
+                const a = res.json();
+                console.log("promise resp", a);
+                return a;
+
+            }).then((json) => {
+            this.setState({allStops: json});
+            console.log(this.state.allStops);
+        });
+    }
+
+    fetchVanOptions(){
+        fetch('http://localhost:3000/availableVans')
+            .then((res) => {
+                const a = res.json();
+                console.log("promise resp", a);
+                return a;
+
+            }).then((json) => {
+            this.setState({allVans: json});
+            console.log(this.state.allVans);
+        });
+    }
+
 
     onCreateRouteChange = (event) => {
         this.setState({route: event.target.value})
@@ -26,6 +61,10 @@ class CreateRoute extends React.Component {
         this.setState({stop: event.target.value})
     };
 
+    onVanSelectChange = (event) => {
+        this.setState({vans: event.target.value})
+    };
+
     onSubmitCreateRoute = () => {
         fetch('http://localhost:3000/createRoute', {
             method: 'post',
@@ -33,7 +72,8 @@ class CreateRoute extends React.Component {
             body: JSON.stringify({
                 route: this.state.route,
                 start: this.state.start,
-                stop: this.state.stop
+                stop: this.state.stop,
+                vans: this.state.vans,
             })
         })
     }
@@ -74,43 +114,41 @@ class CreateRoute extends React.Component {
                                             />
                                         </div>
 
-                                        <div className="pa2 w-100">
+                                        <div className="mt4 w-100">
                                             <label htmlFor="start" className="tc tl f7 db mb2">From:</label>
-                                            <input
-                                                id="start"
-                                                className="center input-reset f3 pa2 db w-60"
-                                                type="start"
-                                                name="start"
-                                                aria-describedby="name-desc"
-                                                placeholder="Departing from"
-                                                onChange={this.onCreateRouteStartChange}
-                                            />
+                                            <select onChange={this.onCreateRouteStartChange} className="gray h2 fw5 b--black-30 w-60 f4" name="starts">
+
+                                                {this.state.allStops.map(function (starts) {
+                                                    return <option className="gray fw5 b--black-30 w-60 f4" key={starts.name} value={starts.name}>{starts.name}</option>
+                                                }, this)}
+
+                                            </select>
                                         </div>
 
-                                        <div className="pa2 w-100">
+                                        <div className="mt4 w-100">
                                             <label htmlFor="stop" className="tc tl f7 db mb2">To:</label>
-                                            <input
-                                                id="stop"
-                                                className="center input-reset f3 pa2 db w-60"
-                                                type="stop"
-                                                name="stop"
-                                                aria-describedby="name-desc"
-                                                placeholder="Destination"
-                                                onChange={this.onCreateRouteStopChange}
-                                            />
+                                            <select onChange={this.onCreateRouteStopChange} className="gray h2 fw5 b--black-30 w-60 f4" name="stops">
+
+                                                {this.state.allStops.map(function (stops) {
+                                                    return <option className="gray fw5 b--black-30 w-60 f4" key={stops.name} value={stops.name}>{stops.name}</option>
+                                                }, this)}
+
+                                            </select>
                                         </div>
 
-                                        <label htmlFor="stop" className="tc tl f7 db mt3 mb2">Select Vehicle:</label>
-                                        <select className="gray h2 fw5 b--black-30 w-40 f4" name="cars">
-                                            <option className="gray fw5 b--black-30 w-40 f4" value="volvo">Volvo</option>
-                                            <option className="gray fw5 b--black-30 w-40 f4" value="saab">Saab</option>
-                                            <option className="gray fw5 b--black-30 w-40 f4" value="fiat">Fiat</option>
-                                            <option className="gray fw5 b--black-30 w-40 f4" value="audi">Audi</option>
-                                        </select>
+                                        <div className="mt4 w-100">
+                                        <label htmlFor="vans" className="tc tl f7 db mt3 mb2">Select Vehicle:</label>
+                                        <select onChange={this.onVanSelectChange} className="gray h2 fw5 b--black-30 w-60 f4" name="vans">
 
+                                            {this.state.allVans.map(function (van) {
+                                                return <option className="black fw5 b--black-30 w-60 f4" key={van.name} value={van.name}>{van.name + " - Seats Avail: " + van.van_capacity} </option>
+                                            }, this)}
+
+                                        </select>
+                                        </div>
                                     </fieldset>
 
-                                    <div className="pa2 w-100">
+                                    <div className="pa3 w-100">
                                         <input
                                             onClick={this.onSubmitCreateRoute}
                                             className="br3 white b ph3 pv2 input-reset ba b--black bg-gray pointer f6 dib"
