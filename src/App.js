@@ -13,7 +13,9 @@ import SigninNavbar from "./components/SigninNavbar/SigninNavbar"
 import AdminDashboard from "./components/Dashboard/Admin/AdminDashboard";
 import AddStop from "./components/AddStop/AddStop";
 import AddVan from "./components/AddVan/AddVan";
-
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import ChangePassword from "./components/ChangePassword/ChangePassword";
+import DeleteAccount from "./components/DeleteAccount/DeleteAccount";
 
 
 
@@ -151,6 +153,27 @@ class App extends Component {
                     <div>
                         <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                         <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
+            case 'forgotPassword':
+                component =
+                    <div>
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <ForgotPassword onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
+            case 'changePassword':
+                component =
+                    <div>
+                        <Navbar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+                        <ChangePassword onRouteChange={this.onRouteChange}/>
+                    </div>
+                break;
+            case 'deleteAccount':
+                component =
+                    <div>
+                        <Navbar isSignedIn={this.state.isSignedIn} userName={this.state.user.name} onRouteChange={this.onRouteChange} />
+                        <DeleteAccount loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                     </div>
                 break;
             case 'home':
